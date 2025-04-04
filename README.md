@@ -1,1 +1,1 @@
-# Liferay Communit
+# Liferay Community
