@@ -1,0 +1,9 @@
+main{
+    display: flex;
+    justify-content: space-between;
+}
+
+aside{
+    width: 30%;
+    margin: 15px 15px;
+}

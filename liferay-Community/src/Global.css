@@ -1,0 +1,60 @@
+:root {
+  --accent-1: #1aa0e8;
+  --accent-2: #e06e31;
+  --accent-3: #d33a2f;
+  --accent-4: #42bfc2;
+  --accent-5: #e55e75;
+  --accent-6: #19ab4f;
+  --accent-7: #503690;
+  --accent-8: #fdcc4a;
+  --accent-9: #47c6f5;
+  --accent-10: #072252;
+  --action-default-active: #004ad7;
+  --action-default-hover: #0053f0;
+  --action-default: #0b5fff;
+  --action-primary-dark-active: #0d2d67;
+  --action-primary-dark-hover: #10377d;
+  --action-secondary-active: #009236;
+  --action-secondary-hover: #0c9e42;
+  --action-secondary: #19ab4f;
+  --action-visited: #5e38ba;
+  --color-action-primary-default: #0B5FFF;
+  --color-brand-primary-darken-5: #00256C;
+  --color-brand-primary: #0B5FFF;
+  --color-neutral-10: #282934;
+  --neutral-1: #2c3a4b;
+  --neutral-2: #394452;
+  --neutral-3: #545d69;
+  --neutral-4: #6d7580;
+  --neutral-5: #858c94;
+  --neutral-6: #a5abb3;
+  --neutral-7: #dadee3;
+  --neutral-8: #ebeef2;
+  --neutral-9: #f4f6f9;
+  --primary-10: #e7effa;
+  --primary-5: #f3f7fd;
+  --primary-7: #eef4fc;
+  --primary-dark: #134194;
+  --primary: #0b63ce;
+  --white: #ffffff;
+  --black: #09101d;
+
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background:var(--black);
+  color: var(--white);
+  --webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea,button{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}

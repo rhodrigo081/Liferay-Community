@@ -1,0 +1,24 @@
+.Header{
+    width: 100rem;
+    height: 4rem;
+    background: var(--color-brand-primary-darken-5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: antiquewhite;
+
+}
+
+.Logo{
+    width: 6rem;
+    margin: 10px  10px;
+}
+
+a{
+    color:var(--white);
+    font-size: larger;
+    text-decoration: none;
+    margin: 10px 30px;
+    
+    
+}
