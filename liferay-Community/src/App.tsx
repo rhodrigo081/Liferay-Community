@@ -1,20 +1,20 @@
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "./styles/themes/lightheme";
+import { Router } from "./Router";
+import { BrowserRouter } from "react-router-dom";
+import { GlobalStyle } from "./global";
+import { darkTheme } from "./styles/themes/darktheme";
+import { useThemeContext } from "./context/ThemeContext";
 
-import { Header } from './components/Header'
-import {Main} from './components/main'
-import './App.css'
-import './Global.css'
-
-export default function App() {
+export function App() {
+  const { theme } = useThemeContext();
 
   return (
-    <>
-    <div>
-      <Header/>
-      <Main/>
-    </div>
-    
-    </>
-  )
+    <BrowserRouter>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <Router />
+        <GlobalStyle />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
 }
-
-
