@@ -7,8 +7,9 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 2.75rem;
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  border-bottom: 2px solid ${(props) => props.theme.border};
   flex-direction: row;
+  background: ${(props) => props.theme.header.background};
 
   nav {
     align-items: center;

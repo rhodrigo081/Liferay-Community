@@ -20,7 +20,9 @@ export const lightTheme = {
   },
     icon: '#A2A4B8',
     hoverIcon: '#54566E',
+    hoverBackground: '#b5ceff',
     navLine: '#0B5FFF',
     danger: '#CE4848',
     hoverdanger: '#F40600',
+    indicator: '#0B5FFF'
 };

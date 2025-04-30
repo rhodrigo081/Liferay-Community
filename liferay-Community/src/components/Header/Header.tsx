@@ -27,7 +27,7 @@ export function Header() {
     },
     {
       label: theme === "light" ? "Tema: Escuro" : "Tema: Claro",
-      icon: theme === "light" ? <Sun size={24} /> : <Moon size={24} />,
+      icon: theme === "light" ?   <Moon size={24} /> : <Sun size={24} />,
       onClick: toggleTheme,
     },
     {

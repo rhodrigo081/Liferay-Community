@@ -20,7 +20,9 @@ export const darkTheme = {
   },
     icon: '#F9F9FB',
     hoverIcon: '#70A1FF',
+    hoverBackground: '#000416',
     navLine: '#0B5FFF',
     danger: '#CE4848',
     hoverdanger: '#F40600',
+    indicator: '#0B5FFF'
 };
