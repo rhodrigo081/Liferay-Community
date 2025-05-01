@@ -16,9 +16,10 @@ import { useThemeContext } from "../../context/ThemeContext";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
-  const rawTheme = useTheme();
+  const currentTheme = useTheme();
   const { toggleTheme, theme } = useThemeContext();
 
+  // Lista de opções que serão exibidas no dropdown
   const options = [
     {
       label: "Perfil",
@@ -38,13 +39,16 @@ export function Header() {
     },
   ];
 
-  function handleOptionSelect(value: string) {
-    console.log("Selecionado:", value);
-  }
-
+   // Estado para controle da rotação do ícone de seta do dropdown
   const [rotated, setRotated] = useState(false);
+
+  // Estado para controlar a exibição do Dropdown
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  /**
+   * Alterna a visibilidade do menu Dropdown de perfil
+   * e a rotação visual do ícone de seta.
+   */
   function handleDropdown() {
     setRotated(!rotated);
     setIsDropdownOpen((prev) => !prev);
@@ -52,12 +56,12 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <NavLink>
+      <NavLink to='/'>
         <img src={theme === "light" ? logoLightTheme : logoDarkTheme} alt="" />
       </NavLink>
       <nav>
         <NotificationContainer>
-          <Bell size={20} color={rawTheme.header.notification.icon} />
+          <Bell size={20} color={currentTheme.header.notification.icon} />
         </NotificationContainer>
 
         <ProfileContainer isDropdownOpen={isDropdownOpen}>
@@ -70,7 +74,7 @@ export function Header() {
           </ProfileInfo>
           <StyledCaretDown isRotated={rotated} onClick={handleDropdown} />
           {isDropdownOpen && (
-            <Dropdown options={options} onSelect={handleOptionSelect} />
+            <Dropdown options={options}/>
           )}
         </ProfileContainer>
       </nav>

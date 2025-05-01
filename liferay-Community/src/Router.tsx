@@ -8,7 +8,7 @@ export function Router(){
         <Routes>
             <Route path='/' element={<DefaultLayout />}>
             <Route path='/' element={<Explorer />}/>
-            <Route path='/friends' element={<Friends />}/>
+            <Route path='/amigos' element={<Friends />}/>
             </Route>
         </Routes>
     );

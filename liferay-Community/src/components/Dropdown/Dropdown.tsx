@@ -1,5 +1,4 @@
 import { DropdownContainer, DropdownItem } from "./styles";
-import { useTheme } from "styled-components";
 
 interface Option {
   label: string;
@@ -13,7 +12,6 @@ interface DropdownProps {
 }
 
 export function Dropdown({ options }: DropdownProps) {
-  const theme = useTheme()
 
   return (
     <DropdownContainer>

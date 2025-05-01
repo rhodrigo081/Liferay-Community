@@ -11,7 +11,7 @@ export function App() {
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
         <Router />
         <GlobalStyle />
       </ThemeProvider>
