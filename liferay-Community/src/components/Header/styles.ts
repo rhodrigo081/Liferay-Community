@@ -77,6 +77,6 @@ export const StyledCaretDown = styled(CaretDown)<{isRotated: boolean}>`
   color: ${(props) => props.theme.header.profile.arrow};
   font-size: 1.5rem;
   transition: transform 0.4s ease;
-  cursor: pointer;
   transform: ${({ isRotated }) => (isRotated ? "rotate(-180deg)" : "rotate(0deg)")};
+  cursor: pointer;
 `;

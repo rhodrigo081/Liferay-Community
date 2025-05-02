@@ -5,7 +5,12 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        scroll-behavior: smooth;
+    }
+
+    html{
+        height: 100%;
+        overflow-x: hidden;
     }
 
     :focus{

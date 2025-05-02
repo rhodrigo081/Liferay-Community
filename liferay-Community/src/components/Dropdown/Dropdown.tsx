@@ -11,6 +11,7 @@ interface DropdownProps {
   options: Option[];
 }
 
+// O dev pode escolher as opções do Dropdown dependendo da sua finalidade
 export function Dropdown({ options }: DropdownProps) {
 
   return (

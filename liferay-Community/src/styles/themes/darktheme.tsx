@@ -24,5 +24,11 @@ export const darkTheme = {
     navLine: '#0B5FFF',
     danger: '#CE4848',
     hoverdanger: '#F40600',
-    indicator: '#0B5FFF'
+    indicator: '#0B5FFF',
+    communityCreation: {
+      text: '#F9F9FB',
+      pictureArea: '#0B5FFF',
+      inputBorder: '#DCDDE4',
+      cancel: '',
+    }
 };

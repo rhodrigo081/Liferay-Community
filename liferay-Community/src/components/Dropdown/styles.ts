@@ -4,10 +4,10 @@ export const DropdownContainer = styled.div`
   position: absolute;
   width: 20rem;
   top: 4.5rem;
-  right: 2.75rem;
+  right: 1.8rem;
   background: ${(props) => props.theme.header.profile.background};
   padding: 0.5rem 0;
-  z-index: 100;
+  z-index: 10;
   border-radius: 0 0 20px 20px;
 `;
 

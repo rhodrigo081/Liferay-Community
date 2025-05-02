@@ -1,11 +1,24 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
-  max-width: 100vw;
+  width: 100vw;
   height: 100vh;
-
-  background: ${(props) => props.theme.background};
-
   display: flex;
   flex-direction: column;
+  background: ${(props) => props.theme.background};
+`;
+
+
+export const MainContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const ContentWrapper = styled.main`
+  flex: 1;
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  padding: 2rem;
 `;

@@ -11,13 +11,14 @@ import logoDarkTheme from "../../assets/Liferay_Logo_DarkTheme.png";
 import userimage from "../../assets/user-image.svg";
 import { useTheme } from "styled-components";
 import { Dropdown } from "../Dropdown/Dropdown.tsx";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
   const currentTheme = useTheme();
   const { toggleTheme, theme } = useThemeContext();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Lista de opções que serão exibidas no dropdown
   const options = [
@@ -54,6 +55,21 @@ export function Header() {
     setIsDropdownOpen((prev) => !prev);
   }
 
+  // fecha o Dropdown ao clicar fora dele
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+        setRotated(false);
+      }
+    }
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <HeaderContainer>
       <NavLink to='/'>
@@ -64,7 +80,7 @@ export function Header() {
           <Bell size={20} color={currentTheme.header.notification.icon} />
         </NotificationContainer>
 
-        <ProfileContainer isDropdownOpen={isDropdownOpen}>
+        <ProfileContainer ref={dropdownRef} isDropdownOpen={isDropdownOpen}>
           <ProfileInfo>
             <img src={userimage} alt="" />
             <div>
@@ -74,7 +90,13 @@ export function Header() {
           </ProfileInfo>
           <StyledCaretDown isRotated={rotated} onClick={handleDropdown} />
           {isDropdownOpen && (
-            <Dropdown options={options}/>
+            <Dropdown options={options.map((option) =>({
+              ...option, onClick: () => {
+                option.onClick()
+                setIsDropdownOpen(false)
+                setRotated(false)
+              }
+            }))}/>
           )}
         </ProfileContainer>
       </nav>
