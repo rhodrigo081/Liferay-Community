@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 export const MainContainer = styled.main`
   display: flex;
+  flex: 1;
+  overflow-y: auto;
 `;
 
 export const Content = styled.div`
   flex: 1;
-  margin-left: 91px;
+  padding: 0 1rem;
+  
 `;
 
 export const Banner = styled.div`
@@ -24,7 +27,7 @@ export const BannerText = styled.div`
 `;
 
 export const CardsTitle = styled.h3`
-  margin-left: 300px;
+  
   margin-bottom: 1.5rem;
 `;
 
@@ -32,7 +35,6 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-left: 300px;
   margin-bottom: 1.5rem;
 `;
 
