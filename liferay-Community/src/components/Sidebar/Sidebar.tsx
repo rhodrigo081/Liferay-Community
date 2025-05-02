@@ -8,6 +8,7 @@ import {
   TopSection,
   BottomSection,
   IconGroup,
+  ExplorerText,
 } from "./styles";
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -54,6 +55,9 @@ export function Sidebar() {
             key={index}
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => {}}
+            to={path}
+            key={index}
+            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <IconGroup
               ref={(el) => (iconRefs.current[index] = el)}

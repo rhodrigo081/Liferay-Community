@@ -84,8 +84,8 @@ export function Header() {
           <ProfileInfo>
             <img src={userimage} alt="" />
             <div>
-              <strong>Brian Chan</strong>
-              <span>@brianchan</span>
+              <strong>Carlos Eduardo</strong>
+              <span>@CarlosEduardo</span>
             </div>
           </ProfileInfo>
           <StyledCaretDown isRotated={rotated} onClick={handleDropdown} />
