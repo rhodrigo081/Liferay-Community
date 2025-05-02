@@ -6,6 +6,7 @@ import { GlobalStyle } from "./global";
 import { darkTheme } from "./styles/themes/darktheme";
 import { useThemeContext } from "./context/ThemeContext";
 
+
 export function App() {
   const { theme } = useThemeContext();
 
