@@ -3,6 +3,7 @@ import { CommunitySection } from "../../components/CommunitySection/CommunitySec
 import { ExploreContainer, Main, Container } from "./styles";
 import { Banner } from "../../components/Banner/Banner";
 import { Filter } from "../../components/Filter/Filter";
+import { CommunityView } from "../../components/CommunityView/CommunityView";
 
 export function Explore() {
   const { communities, handleJoinCommunityUpdate } = useOutletContext();
@@ -21,7 +22,9 @@ export function Explore() {
             cards={communities}
             onJoinCommunity={handleJoinCommunityUpdate}
           />
+          <CommunityView />
         </Container>
+        
       </Main>
     </ExploreContainer>
   );
