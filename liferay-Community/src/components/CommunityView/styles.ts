@@ -9,8 +9,8 @@ export const CardsTitle = styled.h3`
 `;
 
 export const CardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+display: flex;  
+flex-wrap: wrap;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 `;
