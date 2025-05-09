@@ -8,13 +8,16 @@ import {
   TopSection,
   BottomSection,
   IconGroup,
-  ExplorerText,
 } from "./styles";
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { CommunityCreation } from "../ModalCreateCommunity/CommunityCreation";
 
-export function Sidebar() {
+interface SidebarProps{
+  openModal: () => void;
+}
+
+export function Sidebar({openModal}: SidebarProps) {
   const location = useLocation();
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [indicatorTop, setIndicatorTop] = useState(0);
@@ -26,7 +29,7 @@ export function Sidebar() {
   ];
 
   const bottomIcons = [
-    { icon: <IoAddCircleOutline />, index: 2 }, // Sem a função aqui
+    { icon: <IoAddCircleOutline onClick={openModal}/>, index: 2 }, 
   ];
 
   function handleModal() {
@@ -74,13 +77,12 @@ export function Sidebar() {
       <hr />
 
       <BottomSection>
-        {bottomIcons.map(({ icon, index }) => (
+        {bottomIcons.map((item) => (
           <IconGroup
-            key={index}
-            ref={(el) => (iconRefs.current[index] = el)}
-            onClick={handleModal} // Passa a função `handleModal` corretamente aqui
+            key={item.index}
+            ref={(el) => (iconRefs.current[item.index] = el)}
           >
-            <IconWrapper>{icon}</IconWrapper>
+            <IconWrapper>{item.icon}</IconWrapper>
           </IconGroup>
         ))}
       </BottomSection>

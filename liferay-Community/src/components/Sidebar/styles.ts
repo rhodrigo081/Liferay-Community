@@ -1,7 +1,4 @@
 import styled from "styled-components";
-//import { FaRegCompass } from "react-icons/fa";
-//import { PiUsersFill } from "react-icons/pi";
-//import { IoIosAddCircleOutline } from "react-icons/io";
 
 export const SidebarContainer = styled.div`
   width: 5.6rem;
@@ -12,10 +9,11 @@ export const SidebarContainer = styled.div`
   align-items: center;
   padding: 3rem 0;
   gap: 2rem;
-  position: relative;
-  flex-shrink: 0; /* Impede que a sidebar encolha */
-  background: ${props => props.theme.background || '#000'};
-  z-index: 10;
+  position: fixed;
+  flex-shrink: 0;
+  background: ${props => props.theme.background};
+  z-index: 8;
+  top: 6rem;
 
   hr {
     position: relative;
@@ -66,12 +64,4 @@ export const Indicator = styled.div`
   background-color: ${(props) => props.theme.indicator};
   border-radius: 0 4px 4px 0;
   transition: top 0.3s ease;
-`;
-
-export const ExplorerText = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: ${(props) => props.theme.text || 'white'};
-  margin-top: auto; /* Empurra o texto para o final do container */
-  padding-bottom: 1rem;
 `;

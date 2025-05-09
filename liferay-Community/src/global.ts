@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html{
-        height: 100%;
+        height: 100vh;
         overflow-x: hidden;
     }
 
@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background: ${props => props.theme.background};
         color: ${props => props.theme.text};
+        height: 100vh;
     }
 
     body, input, textarea, button{

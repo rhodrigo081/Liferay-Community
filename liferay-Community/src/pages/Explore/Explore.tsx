@@ -1,8 +1,28 @@
-import { CommunityView } from "../../components/CommunityView/CommunityView";
-import { Container } from "./styles";
+import { useOutletContext } from "react-router-dom";
+import { CommunitySection } from "../../components/CommunitySection/CommunitySection";
+import { ExploreContainer, Main, Container } from "./styles";
+import { Banner } from "../../components/Banner/Banner";
+import { Filter } from "../../components/Filter/Filter";
 
 export function Explore() {
+  const { communities, handleJoinCommunityUpdate } = useOutletContext();
+
   return (
-    <CommunityView/>
+    <ExploreContainer>
+      <Banner />
+
+      <Main>
+        <Container>
+          <Filter />
+        </Container>
+        <Container>
+          <h3>Comunidades em Destaque</h3>
+          <CommunitySection
+            cards={communities}
+            onJoinCommunity={handleJoinCommunityUpdate}
+          />
+        </Container>
+      </Main>
+    </ExploreContainer>
   );
 }

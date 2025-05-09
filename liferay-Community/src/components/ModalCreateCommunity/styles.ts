@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { TbCameraPlus } from "react-icons/tb";
 
-// Modal styles
 export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
@@ -52,6 +51,7 @@ export const PictureArea = styled.div`
   gap: 0.3rem;
   cursor: pointer;
   position: relative;
+  z-index: 999; 
   transition: all 0.3s ease-in;
 
   span {
@@ -82,7 +82,7 @@ export const Form = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 2rem;
+  margin: 2rem 0;
   gap: 1.5rem;
 
   label {
@@ -112,6 +112,32 @@ export const Form = styled.div`
     height: 14.6rem;
     border: 2px solid ${(props) => props.theme.communityCreation.inputBorder};
   }
+
+  :last-child {
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+
+    select {
+      font-size: 1.1rem;
+      font-weight: 900;
+      padding: 1rem;
+      background: none;
+      color: #0b5fff;
+      border: 2px solid #0b5fff;
+      border-radius: 8px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    select:hover {
+      transition: all 0.3s ease-in-out;
+      opacity: 0.7;
+    }
+  }
 `;
 
 export const Field = styled.div`
@@ -138,7 +164,7 @@ export const ButtonGroup = styled.div`
   flex-direction: row;
   gap: 2rem;
 
-  button{
+  button {
     font-size: 24px;
     font-weight: 700;
     width: 11.5rem;
@@ -152,28 +178,27 @@ export const ButtonGroup = styled.div`
     z-index: 2000;
   }
 
-  .cancel{
+  .cancel {
     background: none;
-    color: #CE4848;
-    border: 2px solid #CE4848;
+    color: #ce4848;
+    border: 2px solid #ce4848;
     transition: all 0.5s ease;
 
-    &:hover{
-      color: #F40600;
-      border: 2px solid #F40600;
+    &:hover {
+      color: #f40600;
+      border: 2px solid #f40600;
       transition: all 0.5s ease;
     }
   }
 
-  .create{
-    background: #0B5FFF;
-    color: #FFFF;
+  .create {
+    background: #0b5fff;
+    color: #ffff;
     transition: all 0.5s ease;
 
-    &:hover{
+    &:hover {
       transition: all 0.5s ease;
       opacity: 0.7;
     }
   }
-
 `;

@@ -5,6 +5,7 @@ export const darkTheme = {
   name: '#F9F9FB',
   text: '#F9F9FB',
   lightText: '#BFC0CE',
+
   header: {
     background: '#00256C',
     profile: {
@@ -18,6 +19,13 @@ export const darkTheme = {
       ball: '#52F03D',
     },
   },
+
+  banner:{
+    text: '#072252',
+    leftColor: '#2EB7FF',
+    rightColor: '#0B5FFF',
+  },
+
     icon: '#F9F9FB',
     hoverIcon: '#70A1FF',
     hoverBackground: '#000416',
@@ -25,10 +33,18 @@ export const darkTheme = {
     danger: '#CE4848',
     hoverdanger: '#F40600',
     indicator: '#0B5FFF',
+
     communityCreation: {
       text: '#F9F9FB',
       pictureArea: '#0B5FFF',
       inputBorder: '#DCDDE4',
       cancel: '',
+    },
+
+    communityCard: {
+      background: '#00072B',
+      title: '#F9F9FB',
+      paragraph: '#DCDDE4',
+      button: '#0B5FFF',
     }
 };

@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { CaretDown } from "phosphor-react";
 
 export const HeaderContainer = styled.header`
+  position: fixed;
   height: 6.5rem;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +12,7 @@ export const HeaderContainer = styled.header`
   border-bottom: 2px solid ${(props) => props.theme.border};
   flex-direction: row;
   background: ${(props) => props.theme.header.background};
+  z-index: 10;
 
   nav {
     align-items: center;
@@ -19,25 +22,25 @@ export const HeaderContainer = styled.header`
     gap: 2rem;
   }
 
-  img{
-
+  img {
     width: 12rem;
-
   }
 `;
 
 export const ProfileContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 20rem;
   height: 3rem;
-  border-radius: ${({ isDropdownOpen }) => (isDropdownOpen ? "20px 20px 0 0" : "50px")};
+  border-radius: ${({ isDropdownOpen }) =>
+    isDropdownOpen ? "20px 20px 0 0" : "50px"};
   background: ${(props) => props.theme.header.profile.background};
   padding: 0.5rem;
   justify-content: space-between;
 
-  img{
+  img {
     width: 2.3rem;
   }
 `;
@@ -73,10 +76,11 @@ export const NotificationContainer = styled.div`
   background: ${(props) => props.theme.header.notification.background};
 `;
 
-export const StyledCaretDown = styled(CaretDown)<{isRotated: boolean}>`
+export const StyledCaretDown = styled(CaretDown)<{ isRotated: boolean }>`
   color: ${(props) => props.theme.header.profile.arrow};
   font-size: 1.5rem;
   transition: transform 0.4s ease;
-  transform: ${({ isRotated }) => (isRotated ? "rotate(-180deg)" : "rotate(0deg)")};
+  transform: ${({ isRotated }) =>
+    isRotated ? "rotate(-180deg)" : "rotate(0deg)"};
   cursor: pointer;
 `;
