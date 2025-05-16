@@ -1,270 +1,134 @@
 import styled from "styled-components";
 
+// Estrutura geral
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 45rem;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+  background-color: #0e1621;
+  color: #fff;
+  min-height: 100vh;
 `;
-
-
 
 export const Banner = styled.div`
-  padding: 0rem;
-  margin-bottom: 0rem;
-  border-radius: 20px 20px 20px 20px;
-`;
-
-export const UserMenu = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  
-  .notification {
-    font-size: 1.2rem;
-  }
-`;
-
-export const UserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  
-  .username {
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-  
-  .handle {
-    font-size: 0.8rem;
-    color: #ccc;
-  }
-`;
-
-export const DropdownButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  font-size: 0.7rem;
-  cursor: pointer;
-`;
-
-export const Content = styled.main`
-  display: flex;
-  flex: 1;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
-export const Sidebar = styled.aside`
-  width: 80px;
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  gap: 25px;
-  border-right: 1px solid #2d2f34;
-`;
-
-export const SidebarButton = styled.button<{ active?: boolean }>`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.active ? '#1a4fc5' : 'transparent'};
-  border: none;
-  color: white;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background-color: ${props => props.active ? '#1a4fc5' : '#1c1e25'};
-  }
+  padding: 20px 40px;
 `;
 
 export const CommunityHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10px;
 `;
 
-export const CommunityTitle = styled.h2`
-  color: white;
-  font-size: 1.4rem;
+export const CommunityTitle = styled.h1`
+  font-size: 28px;
+  font-weight: 600;
 `;
 
 export const JoinButton = styled.button`
-  background-color: #1a4fc5;
+  background-color: #1877f2;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 20px;
   font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  
   &:hover {
-    background-color: #1341a5;
+    background-color: #0d5dc0;
   }
 `;
 
-export const ForumContainer = styled.section`
-  width: 300px;
-  border-right: 1px solid #2d2f34;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+export const ForumContainer = styled.div`
+  margin-bottom: 30px;
 `;
 
-export const SectionTitle = styled.div`
-  color: #9e9e9e;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  padding: 10px;
-  margin-top: 5px;
-`;
-
-export const ChatList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-`;
-
-export const ChatItem = styled.li<{ active?: boolean }>`
-  padding: 10px;
-  cursor: pointer;
-  background-color: ${props => props.active ? '#1a4fc5' : 'transparent'};
-  transition: background-color 0.2s;
-  
-  &:hover {
-    background-color: ${props => props.active ? '#1a4fc5' : '#1c1e25'};
-  }
-`;
-
-export const ChatItemHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px;
-`;
-
-export const ChatItemTitle = styled.div`
-  color: white;
+export const SectionTitle = styled.h2`
+  font-size: 22px;
   font-weight: 500;
+  margin-top: 20px;
 `;
 
-export const ChatItemTime = styled.div`
-  color: #9e9e9e;
-  font-size: 0.8rem;
-`;
-
-export const ChatItemPreview = styled.p`
-  color: #9e9e9e;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-export const ChatPanel = styled.section`
-  flex: 1;
+export const ChatPanel = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  overflow-y: auto;
-  
-  .chatHeader {
-    margin-bottom: 20px;
-    
-    h3 {
-      font-size: 1.2rem;
-      color: #9e9e9e;
-    }
-  }
-  
-  .feedback-section {
-    margin: 20px 0;
-    
-    h4 {
-      font-size: 1rem;
-      color: #9e9e9e;
-      margin-bottom: 10px;
-    }
+  gap: 20px;
+  .chatHeader h3 {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 10px;
   }
 `;
 
 export const MessageContainer = styled.div`
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
+  background-color: #1c2a3a;
+  border-radius: 10px;
+  padding: 15px 20px;
 `;
 
 export const MessageHeader = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  
+  justify-content: space-between;
+
   .avatar {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 9999px;
     margin-right: 10px;
-    background-color: #2d2f34;
   }
 `;
 
 export const MessageAuthor = styled.div`
-  flex: 1;
-  font-weight: bold;
-  font-size: 0.9rem;
-  
+  font-weight: 600;
+  font-size: 14px;
   span {
-    font-weight: normal;
-    color: #9e9e9e;
-    font-size: 0.8rem;
+    font-weight: 400;
+    font-size: 12px;
+    color: #999;
   }
 `;
 
-export const MessageTimestamp = styled.div`
-  color: #9e9e9e;
-  font-size: 0.8rem;
+export const MessageTimestamp = styled.span`
+  font-size: 12px;
+  color: #aaa;
 `;
 
 export const MessageContent = styled.div`
-  background-color: #1c1e25;
-  margin-bottom: 15px;
-  
+  margin-top: 10px;
   h3 {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    margin: 0;
+    font-size: 16px;
   }
-  
   p {
-    color: #e0e0e0;
-    line-height: 1.5;
-    font-size: 0.95rem;
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #ddd;
   }
 `;
 
 export const MessageInteractions = styled.div`
   display: flex;
-  gap: 15px;
-  
+  gap: 10px;
+  margin-top: 10px;
   button {
     background: none;
     border: none;
-    color: #9e9e9e;
+    color: #ccc;
     cursor: pointer;
-    transition: color 0.2s;
-    
     &:hover {
-      color: white;
+      color: #fff;
     }
   }
 `;
@@ -273,41 +137,92 @@ export const MessageInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 export const CommentArea = styled.textarea`
-  background-color: #12151b;
-  border: 1px solid #2d2f34;
-  border-radius: 8px;
-  padding: 10px;
-  color: white;
   resize: none;
-  height: 80px;
-  
-  &:focus {
-    outline: none;
-    border-color: #1a4fc5;
-  }
-  
-  &::placeholder {
-    color: #9e9e9e;
-  }
+  border-radius: 8px;
+  border: none;
+  padding: 12px;
+  min-height: 80px;
+  background-color: #2e3c4d;
+  color: #fff;
 `;
 
 export const SendButton = styled.button`
-  background-color: #1a4fc5;
-  color: white;
+  align-self: flex-end;
+  background-color: #2563eb;
+  color: #fff;
   border: none;
-  padding: 8px 0;
-  border-radius: 8px;
-  font-weight: bold;
-  align-self: flex-start;
-  width: 100px;
+  padding: 10px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  
+  font-weight: 500;
+
   &:hover {
-    background-color: #1341a5;
+    background-color: #1d4ed8;
+  }
+`;
+
+export const LayoutWrapper = styled.div`
+  display: flex;
+`;
+
+export const Sidebar = styled.aside`
+  width: 260px;
+  background-color: #131c27;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  height: 100vh;
+`;
+
+export const SidebarHeader = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+`;
+
+export const NavSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
+
+export const NavItem = styled.button`
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: #1c2a3a;
+    color: #fff;
+  }
+`;
+
+export const ChannelList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const ChannelItem = styled.li`
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #243241;
+    color: #fff;
   }
 `;
