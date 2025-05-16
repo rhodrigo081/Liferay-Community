@@ -11,23 +11,25 @@ export function Explore() {
 
   return (
     <ExploreContainer>
-      {/* <Banner />
+        <Banner />
 
       <Main>
         <Container>
           <Filter />
         </Container>
-        <Container> */}
-          {/* <h3>Comunidades em Destaque</h3>
+        <Container>
+          <h3>Comunidades em Destaque</h3>
           <CommunitySection
             cards={communities}
             onJoinCommunity={handleJoinCommunityUpdate}
           />
-          <CommunityView /> */}
-          <CommunityDetailView/>
-        {/* </Container> */}
+          
+          <CommunityView /> 
+          
+         </Container>
         
-      {/* </Main> */}
+      </Main>  
+      {/* <CommunityDetailView/>   */}
     </ExploreContainer>
   );
 }

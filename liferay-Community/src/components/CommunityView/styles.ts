@@ -63,7 +63,7 @@ export const CardDescription = styled.p`
   margin-bottom: 1rem;
 `;
 
-export const CardButton = styled.button`
+export const  CardButton = styled.button`
   padding: 0.5rem 1rem;
   background-color: ${(props) => props.theme.button?.background || '#2563eb'};
   color: ${(props) => props.theme.button?.text || 'white'};

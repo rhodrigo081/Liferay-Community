@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 /* Layout base */
 export const MainContainer = styled.div`
+  padding: 104px 0px 0px 90px;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   min-height: 100vh;
@@ -14,12 +15,28 @@ export const LayoutWrapper = styled.div`
 
 /* Sidebar */
 export const Sidebar = styled.aside`
-  width: 260px;
+  width: 12rem;
   background-color: ${({ theme }) => theme.communityCard.background};
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
+
+ hr {
+    position: relative;
+    border: 1px solid ${(props) => props.theme.border};
+    width: auto;
+  }
+
+`;
+
+export const HR = styled.hr`
+    margin-top: 15px;
+    position: relative;
+    border: 1px solid ${(props) => props.theme.border};
+    width: auto;
+  
+
 `;
 
 export const SidebarHeader = styled.div`
@@ -76,6 +93,7 @@ export const Banner = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
+  border-radius: 10px;
 
   img {
     width: 100%;
@@ -95,6 +113,12 @@ export const CommunityHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+   hr {
+    position: relative;
+    border: 1px solid ${(props) => props.theme.border};
+    width: auto;
+  }
 `;
 
 export const CommunityTitle = styled.h1`
@@ -122,12 +146,15 @@ export const ForumContainer = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: 500;
   color: ${({ theme }) => theme.lightText};
   margin-top: 30px;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 `;
+
 
 /* Painel de mensagens */
 export const ChatPanel = styled.div`
@@ -169,6 +196,8 @@ export const MessageHeader = styled.div`
 `;
 
 export const MessageAuthor = styled.div`
+  width: 100%;
+  margin-left: 10px;
   font-weight: 600;
   font-size: 14px;
   color: ${({ theme }) => theme.name};
@@ -181,6 +210,7 @@ export const MessageAuthor = styled.div`
 `;
 
 export const MessageTimestamp = styled.span`
+  width: 10%;
   font-size: 12px;
   color: ${({ theme }) => theme.lightText};
 `;

@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import {
   MainContainer,
   Banner,
@@ -23,12 +24,16 @@ import {
   NavSection,
   NavItem,
   ChannelList,
-  ChannelItem
+  ChannelItem,
+  HR
 } from "./styles";
 
-import bannerImg from "../../assets/BannerJava.jpg";
+import bannerImg from "../../assets/java-community.svg";
 
-export function CommunityDetailView() {
+export function CommunityDatailView() {
+
+  const { communityId } = useParams();
+
   return (
     <MainContainer>
       <LayoutWrapper>
@@ -37,21 +42,9 @@ export function CommunityDetailView() {
           <SidebarHeader>
             <h2>Java Developers</h2>
           </SidebarHeader>
-
-          <NavSection>
-            <NavItem>🏠 Home</NavItem>
-            <NavItem>🕒 Linha do Tempo</NavItem>
-            <NavItem>💬 Fóruns</NavItem>
-            <NavItem>📁 Projetos</NavItem>
-          </NavSection>
-
-          <SectionTitle>Canais</SectionTitle>
-          <ChannelList>
-            <ChannelItem># geral</ChannelItem>
-            <ChannelItem># dúvidas</ChannelItem>
-            <ChannelItem># eventos</ChannelItem>
-            <ChannelItem># backend</ChannelItem>
-          </ChannelList>
+          <hr />
+          <SectionTitle>Agenda</SectionTitle>
+        
         </Sidebar>
 
         {/* Conteúdo principal */}
@@ -65,19 +58,15 @@ export function CommunityDetailView() {
               <CommunityHeader>
                 <CommunityTitle>Java Developers</CommunityTitle>
                 <JoinButton>Participar</JoinButton>
+              
               </CommunityHeader>
-
-              <SectionTitle>Linha do Tempo</SectionTitle>
+             <HR />
             </ForumContainer>
 
             <ChatPanel>
-              <div className="chatHeader">
-                <h3>Hoje</h3>
-              </div>
-
               <MessageContainer>
                 <MessageHeader>
-                  <img src="/avatar.jpg" alt="Avatar" className="avatar" />
+                  <img src="/src/assets/user-image.svg" />
                   <MessageAuthor>
                     Sherman Walter<br />
                     <span>@shermanthegoat</span>
@@ -97,9 +86,8 @@ export function CommunityDetailView() {
                   <button>💬 0</button>
                   <button>🔄</button>
                 </MessageInteractions>
-              </MessageContainer>
 
-              <div className="feedback-section">
+               <div className="feedback-section">
                 <h4>Deixe seu feedback</h4>
                 <MessageInput>
                   <CommentArea placeholder="Escreva um comentário..." />
@@ -107,12 +95,14 @@ export function CommunityDetailView() {
                 </MessageInput>
               </div>
 
+              </MessageContainer>
+
               <MessageContainer>
                 <MessageHeader>
-                  <img src="/avatar.jpg" alt="Avatar" className="avatar" />
+                  <img src="/src/assets/user-image.svg"/>
                   <MessageAuthor>
-                    Sherman Walter<br />
-                    <span>@shermanthegoat</span>
+                    Victor Gabriel<br />
+                    <span>@VictorGabriel</span>
                   </MessageAuthor>
                   <MessageTimestamp>2 dias atrás</MessageTimestamp>
                 </MessageHeader>
@@ -125,10 +115,18 @@ export function CommunityDetailView() {
                 </MessageContent>
 
                 <MessageInteractions>
-                  <button>👍 0</button>
+                  <button>👍 0</button> 
                   <button>💬 0</button>
                   <button>🔄</button>
                 </MessageInteractions>
+
+                 <div className="feedback-section">
+                <h4>Deixe seu feedback</h4>
+                <MessageInput>
+                  <CommentArea placeholder="Escreva um comentário..." />
+                  <SendButton>Publicar</SendButton>
+                </MessageInput>
+              </div>
               </MessageContainer>
             </ChatPanel>
           </Content>
