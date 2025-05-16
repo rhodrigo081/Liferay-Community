@@ -1,18 +1,82 @@
 import styled from "styled-components";
 
-// Estrutura geral
+/* Layout base */
 export const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #0e1621;
-  color: #fff;
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   min-height: 100vh;
 `;
 
+/* Wrapper que divide sidebar e conteúdo */
+export const LayoutWrapper = styled.div`
+  display: flex;
+`;
+
+/* Sidebar */
+export const Sidebar = styled.aside`
+  width: 260px;
+  background-color: ${({ theme }) => theme.communityCard.background};
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+export const SidebarHeader = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: ${({ theme }) => theme.name};
+`;
+
+export const NavSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
+
+export const NavItem = styled.button`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.lightText};
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.hoverBackground};
+    color: ${({ theme }) => theme.text};
+  }
+`;
+
+export const ChannelList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const ChannelItem = styled.li`
+  padding: 6px 10px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.lightText};
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.hoverBackground};
+    color: ${({ theme }) => theme.text};
+  }
+`;
+
+/* Banner */
 export const Banner = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
+
   img {
     width: 100%;
     height: 100%;
@@ -20,10 +84,11 @@ export const Banner = styled.div`
   }
 `;
 
+/* Conteúdo principal */
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 40px;
+  padding: 30px 40px;
 `;
 
 export const CommunityHeader = styled.div`
@@ -35,18 +100,20 @@ export const CommunityHeader = styled.div`
 export const CommunityTitle = styled.h1`
   font-size: 28px;
   font-weight: 600;
+  color: ${({ theme }) => theme.title};
 `;
 
 export const JoinButton = styled.button`
-  background-color: #1877f2;
+  background-color: ${({ theme }) => theme.communityCard.button};
   color: white;
   border: none;
   padding: 10px 20px;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
+
   &:hover {
-    background-color: #0d5dc0;
+    background-color: ${({ theme }) => theme.hoverIcon};
   }
 `;
 
@@ -55,24 +122,35 @@ export const ForumContainer = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
-  margin-top: 20px;
+  color: ${({ theme }) => theme.lightText};
+  margin-top: 30px;
+  margin-bottom: 10px;
 `;
 
+/* Painel de mensagens */
 export const ChatPanel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   .chatHeader h3 {
-    font-size: 18px;
-    color: #ccc;
+    font-size: 16px;
+    color: ${({ theme }) => theme.lightText};
     margin-bottom: 10px;
+  }
+
+  .feedback-section h4 {
+    margin: 0;
+    color: ${({ theme }) => theme.lightText};
+    font-size: 15px;
+    margin-top: 10px;
   }
 `;
 
 export const MessageContainer = styled.div`
-  background-color: #1c2a3a;
+  background-color: ${({ theme }) => theme.communityCard.background};
   border-radius: 10px;
   padding: 15px 20px;
 `;
@@ -93,28 +171,33 @@ export const MessageHeader = styled.div`
 export const MessageAuthor = styled.div`
   font-weight: 600;
   font-size: 14px;
+  color: ${({ theme }) => theme.name};
+
   span {
     font-weight: 400;
     font-size: 12px;
-    color: #999;
+    color: ${({ theme }) => theme.lightText};
   }
 `;
 
 export const MessageTimestamp = styled.span`
   font-size: 12px;
-  color: #aaa;
+  color: ${({ theme }) => theme.lightText};
 `;
 
 export const MessageContent = styled.div`
   margin-top: 10px;
+
   h3 {
     margin: 0;
     font-size: 16px;
+    color: ${({ theme }) => theme.title};
   }
+
   p {
     margin: 5px 0 0;
     font-size: 14px;
-    color: #ddd;
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -122,13 +205,15 @@ export const MessageInteractions = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 10px;
+
   button {
     background: none;
     border: none;
-    color: #ccc;
+    color: ${({ theme }) => theme.lightText};
     cursor: pointer;
+
     &:hover {
-      color: #fff;
+      color: ${({ theme }) => theme.text};
     }
   }
 `;
@@ -146,13 +231,14 @@ export const CommentArea = styled.textarea`
   border: none;
   padding: 12px;
   min-height: 80px;
-  background-color: #2e3c4d;
-  color: #fff;
+  background-color: ${({ theme }) => theme.communityCreation.inputBorder};
+  color: ${({ theme }) => theme.title};
+  font-size: 14px;
 `;
 
 export const SendButton = styled.button`
   align-self: flex-end;
-  background-color: #2563eb;
+  background-color: ${({ theme }) => theme.communityCard.button};
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -161,68 +247,6 @@ export const SendButton = styled.button`
   font-weight: 500;
 
   &:hover {
-    background-color: #1d4ed8;
-  }
-`;
-
-export const LayoutWrapper = styled.div`
-  display: flex;
-`;
-
-export const Sidebar = styled.aside`
-  width: 260px;
-  background-color: #131c27;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  color: #ffffff;
-  height: 100vh;
-`;
-
-export const SidebarHeader = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
-`;
-
-export const NavSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-`;
-
-export const NavItem = styled.button`
-  background: none;
-  border: none;
-  color: #ccc;
-  font-size: 14px;
-  text-align: left;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 6px;
-
-  &:hover {
-    background-color: #1c2a3a;
-    color: #fff;
-  }
-`;
-
-export const ChannelList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-export const ChannelItem = styled.li`
-  padding: 6px 10px;
-  font-size: 14px;
-  color: #aaa;
-  border-radius: 6px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #243241;
-    color: #fff;
+    background-color: ${({ theme }) => theme.hoverIcon};
   }
 `;
