@@ -1,12 +1,21 @@
 import { FaFilter } from "react-icons/fa";
-import {
-  FilterContainer,
-  HiddenCheckbox,
-  StyledCheckbox,
-  Checkmark,
-} from "./styles";
+import { FilterContainer,  StyledRadio, Checkmark } from "./styles";
 
-export function Filter() {
+interface FilterProps {
+  selectedCategory: string;
+  onCategoryChange: (category: string) => void;
+}
+
+export function Filter({ selectedCategory, onCategoryChange }: FilterProps) {
+  const categories: string[] = [
+    "Esportes",
+    "Jogos",
+    "Leitura e Ensino",
+    "Voluntariado",
+    "Música",
+    "Trabalho",
+  ];
+
   return (
     <FilterContainer>
       <h2>
@@ -15,72 +24,23 @@ export function Filter() {
       </h2>
       <ul>
         <h3>Por Categoria</h3>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Esportes</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Jogos</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Leitura e Ensino</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Voluntariado</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Música</span>
-          </label>
-        </li>
-        <li>
-          <label>
-            <HiddenCheckbox />
-            <StyledCheckbox>
-              <Checkmark viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </Checkmark>
-            </StyledCheckbox>
-            <span>Trabalho</span>
-          </label>
-        </li>
+        {categories.map((category) => {
+          const id = `radio-${category}`;
+          const isChecked = selectedCategory === category;
+
+          return (
+            <li key={category}>
+              <label htmlFor={id} onClick={() => onCategoryChange(isChecked ? "" : category)}>
+                <StyledRadio isChecked={isChecked}>
+                  <Checkmark viewBox="0 0 24 24" isVisible={isChecked}>
+                    <polyline points="20 6 9 17 4 12" />
+                  </Checkmark>
+                </StyledRadio>
+                <span>{category}</span>
+              </label>
+            </li>
+          );
+        })}
       </ul>
     </FilterContainer>
   );

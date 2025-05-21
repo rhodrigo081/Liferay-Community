@@ -1,4 +1,11 @@
-import { Card, CardFooter, CommunityInfo, Text, CardsGrid } from "./styles";
+import {
+  Card,
+  CardFooter,
+  CommunityInfo,
+  Text,
+  CardsGrid,
+  Category,
+} from "./styles";
 import { FaCircle } from "react-icons/fa";
 
 interface CardsProps {
@@ -7,6 +14,7 @@ interface CardsProps {
   title: string;
   description: string;
   members: number;
+  category: string;
 }
 
 interface CommunityCardProps {
@@ -16,18 +24,14 @@ interface CommunityCardProps {
 
 export function CommunityCard({ cards = [], onJoin = () => {} }) {
   function handleJoinCommunity(communityId: string) {
-    if (onJoin) {
-      onJoin(communityId);
-    } else {
-      alert("Não foi possível entrar na comunidade!")
-    }
+    onJoin(communityId);
   }
 
   return (
     <CardsGrid>
       {cards.map((card) => (
-        <Card key={card.id || card.title}>
-          <img src={card.cover} alt={`Capa da comunidade ${card.title}`} />
+        <Card key={card.id}>
+          <img src={card.cover} alt={`Capa da comunidade: ${card.title}`} />
 
           <CommunityInfo>
             <Text>
@@ -36,13 +40,16 @@ export function CommunityCard({ cards = [], onJoin = () => {} }) {
             <Text>
               <p title={card.description}>
                 {card.description.length > 100
-                  ? card.description.slice(0, 100) + "..."
+                  ? `${card.description.slice(0, 100)}...`
                   : card.description}
               </p>
             </Text>
+            <Text>
+              <Category>{card.category}</Category>
+            </Text>
           </CommunityInfo>
           <CardFooter>
-          <button
+            <button
               className="join-button"
               onClick={() => handleJoinCommunity(card.id)}
             >
@@ -51,7 +58,7 @@ export function CommunityCard({ cards = [], onJoin = () => {} }) {
             <p>
               <FaCircle color="#FFBB0A" />
               {card.members} Membros
-            </p>          
+            </p>
           </CardFooter>
         </Card>
       ))}

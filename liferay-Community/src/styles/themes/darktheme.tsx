@@ -5,6 +5,7 @@ export const darkTheme = {
   name: '#F9F9FB',
   text: '#F9F9FB',
   lightText: '#BFC0CE',
+  searchBar: '#70A1FF',
 
   header: {
     background: '#00256C',
@@ -46,5 +47,8 @@ export const darkTheme = {
       title: '#F9F9FB',
       paragraph: '#DCDDE4',
       button: '#0B5FFF',
+      category: '#DCDDE4',
+      categoryBackground: '#818181a0',
+      categoryHover: '#0B5FFF',
     }
 };

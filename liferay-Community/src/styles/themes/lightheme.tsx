@@ -5,6 +5,7 @@ export const lightTheme = {
   name: '#000742',
   text: '#0B5FFF',
   lightText: '#3D80FF',
+  searchBar: '#0B5FFF',
 
   header: {
     background: '#F9F9FB',
@@ -46,5 +47,8 @@ export const lightTheme = {
       title: '#0B5FFF',
       paragraph: '#3D80FF',
       button: '#0B5FFF',
+      category: '#000742',
+      categoryBackground: '#818181a0',
+      categoryHover: '#0B5FFF',
     },
 };

@@ -11,11 +11,29 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  gap: 4rem;
 `;
 
 export const Container = styled.div`
-display: flex;  
-flex-wrap: wrap;
-  gap: 1.5rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+`;
+
+export const FilterSide = styled.div`
+  width: 15rem;
+  height: 100%;
+  margin-left: 1rem;
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+  }
 `;

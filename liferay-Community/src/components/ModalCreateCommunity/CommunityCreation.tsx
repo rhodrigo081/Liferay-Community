@@ -20,6 +20,7 @@ interface CommunityCreationProps {
     title: string;
     description: string;
     members: number;
+    category: string;
   }) => void;
 }
 
@@ -30,6 +31,7 @@ export function CommunityCreation({
   const [image, setImage] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleUpdateImage = (e) => {
     const file = e.target.files[0];
@@ -43,7 +45,7 @@ export function CommunityCreation({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleCreate = () => {
-    if (!title || !description) {
+    if (!title || !description || !category) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
@@ -56,6 +58,7 @@ export function CommunityCreation({
       title,
       description,
       members: 0,
+      category,
     });
     closeModal();
   };
@@ -114,16 +117,16 @@ export function CommunityCreation({
           </Field>
           <Field>
             <label htmlFor="category"> Categoria: </label>
-            <select name="category" id="category">
+            <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="" disabled selected>
                 Selecione uma categoria
               </option>
-              <option value="sports">Esportes</option>
-              <option value="games">Jogos</option>
-              <option value="readingAndTeaching">Leitura e Ensino</option>
-              <option value="volunteering">Voluntariado</option>
-              <option value="music">Música</option>
-              <option value="work">Trabalho</option>
+              <option value="Esportes">Esportes</option>
+              <option value="Jogos">Jogos</option>
+              <option value="Leitura e Ensino">Leitura e Ensino</option>
+              <option value="Voluntariado">Voluntariado</option>
+              <option value="Música">Música</option>
+              <option value="Trabalho">Trabalho</option>
             </select>
           </Field>
         </Form>

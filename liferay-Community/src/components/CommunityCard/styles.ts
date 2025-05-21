@@ -8,12 +8,13 @@ export const CardsGrid = styled.div`
 `;
 
 export const Card = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.communityCard.background};
   overflow: hidden;
   width: 21.8rem;
-  height: 15.6rem;
+  height: 20rem;
   border-radius: 8px;
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in;
@@ -40,9 +41,14 @@ export const CommunityInfo = styled.div`
 `;
 
 export const Text = styled.div`
-  width: 80%;
+  width: 90%;
+  max-width: 90%;
   display: flex;
   align-items: flex-start;
+  max-height: 4.1rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  
 
   strong {
     font-size: 16px;
@@ -52,7 +58,6 @@ export const Text = styled.div`
   p {
     color: ${(props) => props.theme.communityCard.paragraph};
     text-align: justify;
-    height: 4.1rem;
     font-size: 13px;
     line-height: 1.6;
   }
@@ -66,6 +71,8 @@ export const CardFooter = styled.div`
   align-items: center;
   padding: 0 0.8rem;
   color: ${(props) => props.theme.communityCard.paragraph};
+  position: absolute;
+  top: 85%;
 
   button {
     width: 7.5rem;
@@ -88,5 +95,21 @@ export const CardFooter = styled.div`
     align-items: center;
     gap: 0.3rem;
     font-size: 12px;
+  }
+`;
+
+export const Category = styled.div`
+  position: relative;
+  padding: 0.25rem 0.75rem;
+  color: ${(props) => props.theme.communityCard.category};
+  background-color: ${(props) => props.theme.communityCard.categoryBackground};
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.communityCard.categoryHover};
   }
 `;
