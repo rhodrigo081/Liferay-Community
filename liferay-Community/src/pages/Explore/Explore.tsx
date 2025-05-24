@@ -49,6 +49,7 @@ export function Explore() {
           <CommunitySection
             cards={filteredCommunities}
             onJoinCommunity={handleJoinCommunityUpdate}
+            onCategoryClick={(category) => setSelectedCategory((prev) => (prev === category ? "" : category))}
           />
         </Container>
       </Main>

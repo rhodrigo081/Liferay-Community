@@ -39,7 +39,7 @@ export const ModalContent = styled.div`
 `;
 
 export const PictureArea = styled.div`
-  width: 11.5rem;
+  width: 30rem;
   height: 11.5rem;
   border-radius: 35px;
   color: ${(props) => props.theme.communityCreation.pictureArea};
@@ -73,7 +73,6 @@ export const StyledCamera = styled(TbCameraPlus)`
 export const ImagePreview = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 35px;
 `;
 

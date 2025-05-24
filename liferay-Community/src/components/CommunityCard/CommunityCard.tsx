@@ -15,14 +15,20 @@ interface CardsProps {
   description: string;
   members: number;
   category: string;
+  joined: boolean;
 }
 
 interface CommunityCardProps {
   cards?: CardsProps[];
   onJoin: (communityId: string) => void;
+  onCategoryClick?: (category: string) => void;
 }
 
-export function CommunityCard({ cards = [], onJoin = () => {} }) {
+export function CommunityCard({
+  cards = [],
+  onJoin = () => {},
+  onCategoryClick = () => {},
+}) {
   function handleJoinCommunity(communityId: string) {
     onJoin(communityId);
   }
@@ -45,20 +51,28 @@ export function CommunityCard({ cards = [], onJoin = () => {} }) {
               </p>
             </Text>
             <Text>
-              <Category>{card.category}</Category>
+              <Category onClick={() => onCategoryClick?.(card.category)}>
+                {card.category}
+              </Category>
             </Text>
           </CommunityInfo>
           <CardFooter>
-            <button
-              className="join-button"
-              onClick={() => handleJoinCommunity(card.id)}
-            >
-              Entrar
-            </button>
-            <p>
-              <FaCircle color="#FFBB0A" />
-              {card.members} Membros
-            </p>
+            <div>
+              {!card.joined && (
+                <button
+                  className="join-button"
+                  onClick={() => handleJoinCommunity(card.id)}
+                >
+                  Entrar
+                </button>
+              )}
+            </div>
+            <div>
+              <p>
+                <FaCircle color="#FFBB0A" />
+                {card.members} Membros
+              </p>
+            </div>
           </CardFooter>
         </Card>
       ))}

@@ -21,6 +21,7 @@ interface CommunityCreationProps {
     description: string;
     members: number;
     category: string;
+    joined: boolean;
   }) => void;
 }
 
@@ -57,7 +58,7 @@ export function CommunityCreation({
       cover: image || defaultCover,
       title,
       description,
-      members: 0,
+      members: 1,
       category,
     });
     closeModal();
@@ -72,7 +73,6 @@ export function CommunityCreation({
 
         <PictureArea
           onClick={(event) => {
-            console.log("Clique na PictureArea detectado!", event.target);
             fileInputRef.current?.click();
           }}
         >

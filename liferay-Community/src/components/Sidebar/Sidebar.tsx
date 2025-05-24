@@ -8,16 +8,20 @@ import {
   TopSection,
   BottomSection,
   IconGroup,
+  CommunityList,
 } from "./styles";
 import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useOutletContext } from "react-router-dom";
 import { CommunityCreation } from "../ModalCreateCommunity/CommunityCreation";
 
-interface SidebarProps{
+import java from "../../assets/BannerJava.jpg";
+
+interface SidebarProps {
   openModal: () => void;
+  communities: CardsProps[];
 }
 
-export function Sidebar({openModal}: SidebarProps) {
+export function Sidebar({ openModal, communities }: SidebarProps) {
   const location = useLocation();
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [indicatorTop, setIndicatorTop] = useState(0);
@@ -29,7 +33,7 @@ export function Sidebar({openModal}: SidebarProps) {
   ];
 
   const bottomIcons = [
-    { icon: <IoAddCircleOutline onClick={openModal}/>, index: 2 }, 
+    { icon: <IoAddCircleOutline onClick={openModal} />, index: 2 },
   ];
 
   function handleModal() {
@@ -45,7 +49,7 @@ export function Sidebar({openModal}: SidebarProps) {
       const offsetTop = currentIcon.offsetTop;
       setIndicatorTop(offsetTop);
     }
-  }, [location.pathname]);
+  }, [location.pathname, communities]);
 
   return (
     <SidebarContainer>
@@ -58,9 +62,6 @@ export function Sidebar({openModal}: SidebarProps) {
             key={index}
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => {}}
-            to={path}
-            key={index}
-            className={({ isActive }) => (isActive ? "active" : "")}
           >
             <IconGroup
               ref={(el) => (iconRefs.current[index] = el)}
@@ -85,6 +86,17 @@ export function Sidebar({openModal}: SidebarProps) {
             <IconWrapper>{item.icon}</IconWrapper>
           </IconGroup>
         ))}
+        <CommunityList>
+          {communities.map((community, index) => {
+            const isActive = location.pathname === `/community/${community.id}`;
+
+            return <NavLink key={community.id} to={`/community/${community.id}`} title={community.title} 
+            className={({isActive}) => (isActive ? "active" : "")}>
+              <img src={community.cover} ref={(el) => (iconRefs.current[topIcons.length + index] = el)}
+              className={isActive ? "active" : ""} />
+            </NavLink>;
+          })}
+        </CommunityList>
       </BottomSection>
 
       {isModalOpen && <CommunityCreation closeModal={handleModal} />}

@@ -18,6 +18,8 @@ export const Card = styled.div`
   border-radius: 8px;
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in;
+  align-items: center;
+
 
   img {
     object-fit: cover;
@@ -73,6 +75,15 @@ export const CardFooter = styled.div`
   color: ${(props) => props.theme.communityCard.paragraph};
   position: absolute;
   top: 85%;
+  left: 3%;
+  
+  div{
+    display: flex;
+    align-items: center;
+    min-width: 7.5rem;
+    min-height: 100%;
+    height: 100%;
+  }
 
   button {
     width: 7.5rem;
@@ -93,8 +104,10 @@ export const CardFooter = styled.div`
   p {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.3rem;
     font-size: 12px;
+
   }
 `;
 

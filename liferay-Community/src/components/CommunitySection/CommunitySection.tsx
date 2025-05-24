@@ -14,16 +14,18 @@ interface CommunityCardData {
 interface CommunitySectionProps {
   cards: CommunityCardData[];
   onJoinCommunity: (communityId: string) => void;
+  onCategoryClick?: (category: string) => void;
 }
 
 export function CommunitySection({
   cards,
   onJoinCommunity,
+  onCategoryClick
 }: CommunitySectionProps) {
   return (
     <Section>
       {cards.length > 0 ? (
-        <CommunityCard cards={cards} onJoin={onJoinCommunity} />
+        <CommunityCard cards={cards} onJoin={onJoinCommunity} onCategoryClick={onCategoryClick} />
       ) : (
         <Notice>
           <AiOutlineInfoCircle size={124} />

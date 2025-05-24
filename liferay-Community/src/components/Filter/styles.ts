@@ -41,10 +41,6 @@ export const StyledRadio = styled.div<{ isChecked: boolean }>`
   transition: all 0.2s ease-in-out;
   border: 1px solid;
   margin-right: 8px;
-
-  ${HiddenRadio}:focus + & {
-    box-shadow: 0 0 0 2px cornflowerblue;
-  }
   cursor: pointer;
 `;
 
