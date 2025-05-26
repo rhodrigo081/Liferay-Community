@@ -14,7 +14,6 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, useOutletContext } from "react-router-dom";
 import { CommunityCreation } from "../ModalCreateCommunity/CommunityCreation";
 
-import java from "../../assets/BannerJava.jpg";
 
 interface SidebarProps {
   openModal: () => void;

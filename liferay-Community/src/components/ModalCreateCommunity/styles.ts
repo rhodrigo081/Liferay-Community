@@ -39,8 +39,8 @@ export const ModalContent = styled.div`
 `;
 
 export const PictureArea = styled.div`
-  width: 30rem;
-  height: 11.5rem;
+  width: 85%;
+  height: 11rem;
   border-radius: 35px;
   color: ${(props) => props.theme.communityCreation.pictureArea};
   border: 2px dashed;
@@ -74,6 +74,8 @@ export const ImagePreview = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 35px;
+  object-fit: cover;
+  object-position: center;
 `;
 
 export const Form = styled.div`

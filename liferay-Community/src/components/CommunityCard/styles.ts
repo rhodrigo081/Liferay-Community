@@ -5,6 +5,10 @@ export const CardsGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1.35rem;
   height: 100%;
+
+  a{
+    text-decoration: none;
+  }
 `;
 
 export const Card = styled.div`

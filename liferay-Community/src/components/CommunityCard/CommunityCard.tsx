@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import {
   Card,
   CardFooter,
@@ -36,45 +37,52 @@ export function CommunityCard({
   return (
     <CardsGrid>
       {cards.map((card) => (
-        <Card key={card.id}>
-          <img src={card.cover} alt={`Capa da comunidade: ${card.title}`} />
+        <NavLink key={card.id} to={`/community/${card.id}`} title={card.title}>
+          <Card>
+            <img src={card.cover} alt={`Capa da comunidade: ${card.title}`} />
 
-          <CommunityInfo>
-            <Text>
-              <strong>{card.title}</strong>
-            </Text>
-            <Text>
-              <p title={card.description}>
-                {card.description.length > 100
-                  ? `${card.description.slice(0, 100)}...`
-                  : card.description}
-              </p>
-            </Text>
-            <Text>
-              <Category onClick={() => onCategoryClick?.(card.category)}>
-                {card.category}
-              </Category>
-            </Text>
-          </CommunityInfo>
-          <CardFooter>
-            <div>
-              {!card.joined && (
-                <button
-                  className="join-button"
-                  onClick={() => handleJoinCommunity(card.id)}
+            <CommunityInfo>
+              <Text>
+                <strong>{card.title}</strong>
+              </Text>
+              <Text>
+                <p title={card.description}>
+                  {card.description.length > 135
+                    ? `${card.description.slice(0, 135)}...`
+                    : card.description}
+                </p>
+              </Text>
+              <Text>
+                <Category
+                  onClick={(e) => {
+                    onCategoryClick?.(card.category);
+                    e.preventDefault();
+                  }}
                 >
-                  Entrar
-                </button>
-              )}
-            </div>
-            <div>
-              <p>
-                <FaCircle color="#FFBB0A" />
-                {card.members} Membros
-              </p>
-            </div>
-          </CardFooter>
-        </Card>
+                  {card.category}
+                </Category>
+              </Text>
+            </CommunityInfo>
+            <CardFooter>
+              <div>
+                {!card.joined && (
+                  <button
+                    className="join-button"
+                    onClick={() => handleJoinCommunity(card.id)}
+                  >
+                    Entrar
+                  </button>
+                )}
+              </div>
+              <div>
+                <p>
+                  <FaCircle color="#FFBB0A" />
+                  {card.members} Membros
+                </p>
+              </div>
+            </CardFooter>
+          </Card>
+        </NavLink>
       ))}
     </CardsGrid>
   );
