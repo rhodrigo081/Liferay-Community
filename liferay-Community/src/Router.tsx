@@ -4,7 +4,6 @@ import { Friends } from './pages/Friends/Friends.tsx';
 import { DefaultLayout } from './layouts/DefaultLayout/index.tsx';
 import { CommunityDatailView } from './components/CommunityDatailView/CommunityDatailView.tsx';
 
-
 export function Router(){
     return(
       <Routes>

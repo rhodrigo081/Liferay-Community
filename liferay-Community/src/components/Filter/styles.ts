@@ -36,5 +36,13 @@ export const StyledRadio = styled.div<{ isChecked: boolean }>`
 `;
 
 export const Checkmark = styled.svg<{ isVisible: boolean }>`
+<<<<<<< HEAD
   // ... (seu código existente) ...
+=======
+  display: block;
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")}; 
+>>>>>>> 878aaedc7bb223c33c793d0a9fe20e689453eb33
 `;
