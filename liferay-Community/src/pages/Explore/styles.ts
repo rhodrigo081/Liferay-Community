@@ -19,6 +19,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  @media (max-width: 1360px){
+    width: 75%;
+  }
 `;
 
 export const FilterSide = styled.div`

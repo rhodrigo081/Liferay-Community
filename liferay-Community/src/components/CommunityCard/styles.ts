@@ -117,6 +117,7 @@ export const CardFooter = styled.div`
 
 export const Category = styled.div`
   position: relative;
+  margin-top: 0.1rem;
   padding: 0.25rem 0.75rem;
   color: ${(props) => props.theme.communityCard.category};
   background-color: ${(props) => props.theme.communityCard.categoryBackground};

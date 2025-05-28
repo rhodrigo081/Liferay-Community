@@ -5,14 +5,16 @@ export const MainContainer = styled.div`
   padding: 104px 0px 0px 90px;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
-  min-height: 100vh;
+  height: 100%;
 `;
 
 /* Wrapper que divide sidebar e conteúdo */
 export const LayoutWrapper = styled.div`
   display: flex;
+  height: 100%;
   .mainCommunity {
-    width: 88.5%;
+    width: 100%;
+    padding: 1rem;
   }
 `;
 
@@ -24,7 +26,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 100%;
   gap: 2rem;
 
   hr {
@@ -106,13 +108,12 @@ export const Banner = styled.div`
   width: 100%;
   height: 22rem;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 48px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    image-rendering: auto;
   }
 `;
 
@@ -262,10 +263,10 @@ export const MessageInput = styled.div`
 export const CommentArea = styled.textarea`
   resize: none;
   border-radius: 8px;
-  border: none;
+  border: 1px solid ${(props) => props.theme.border};
   padding: 12px;
   min-height: 80px;
-  background-color: ${({ theme }) => theme.communityCreation.inputBorder};
+  background: ${({ theme }) => theme.hoverBackground};
   color: ${({ theme }) => theme.title};
   font-size: 14px;
 `;

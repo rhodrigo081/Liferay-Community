@@ -5,8 +5,8 @@ export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(0.2rem);
   display: flex;
@@ -19,8 +19,8 @@ export const ModalContent = styled.div`
   background: ${(props) => props.theme.background};
   padding: 2rem;
   border-radius: 35px;
-  width: 40vw;
-  height: 90vh;
+  width: 40%;
+  height: 90%;
   max-width: 90%;
   display: flex;
   flex-direction: column;
@@ -36,11 +36,19 @@ export const ModalContent = styled.div`
   span {
     color: #0b5fff;
   }
+
+  @media (max-width: 1360px) {
+    gap: 0.5rem;
+
+    h1{
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 export const PictureArea = styled.div`
   width: 85%;
-  height: 11rem;
+  height: 20%;
   border-radius: 35px;
   color: ${(props) => props.theme.communityCreation.pictureArea};
   border: 2px dashed;
@@ -55,8 +63,11 @@ export const PictureArea = styled.div`
   transition: all 0.3s ease-in;
 
   span {
-    font-size: 20px;
+    font-size: 1.4rem;
     font-weight: 900;
+    @media (max-width: 1360px){
+      font-size: 1rem;
+    }
   }
 
   &:hover {
@@ -68,6 +79,10 @@ export const PictureArea = styled.div`
 export const StyledCamera = styled(TbCameraPlus)`
   font-size: 3.5rem;
   transition: transform 0.4s ease;
+
+  @media (max-width: 1360px){
+    font-size: 2rem;
+  }
 `;
 
 export const ImagePreview = styled.img`
@@ -96,7 +111,7 @@ export const Form = styled.div`
   textarea {
     width: 100%;
     background: none;
-    padding: 7px;
+    padding: 0.6rem 0.2rem 0.3rem 0.6rem;
     color: ${(props) => props.theme.communityCreation.text};
     font-size: 16px;
   }
@@ -139,6 +154,13 @@ export const Form = styled.div`
       opacity: 0.7;
     }
   }
+
+  @media(max-width: 1360px){
+    gap: 1rem;
+    textarea{
+      height: 7rem;
+    }
+  }
 `;
 
 export const Field = styled.div`
@@ -147,16 +169,9 @@ export const Field = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
-`;
 
-export const CheckBoxGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  gap: 0.5rem;
-
-  input {
-    margin-left: 2rem;
+  @media (max-width: 1360px){
+    gap: 0.2rem;
   }
 `;
 
@@ -203,3 +218,5 @@ export const ButtonGroup = styled.div`
     }
   }
 `;
+
+

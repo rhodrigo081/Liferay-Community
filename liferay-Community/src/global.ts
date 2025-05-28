@@ -9,8 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html{
-        height: 100vh;
-        overflow-x: hidden;
+        height: 100%;
+        width: 100%;
     }
 
     :focus{
@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background: ${props => props.theme.background};
         color: ${props => props.theme.text};
-        height: 100vh;
+        height: 100%;
     }
 
     body, input, textarea, button{

@@ -4,7 +4,7 @@ import { CaretDown } from "phosphor-react";
 export const HeaderContainer = styled.header`
   position: fixed;
   height: 6.5rem;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

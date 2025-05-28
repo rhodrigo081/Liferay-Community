@@ -2,7 +2,13 @@ import styled from "styled-components";
 
 export const Section = styled.div`
   width: 100%;
-  min-height: 30rem;
+  
+  @media (max-width: 1360px) {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Notice = styled.div`

@@ -6,6 +6,8 @@ export const darkTheme = {
   text: '#F9F9FB',
   lightText: '#BFC0CE',
   searchBar: '#70A1FF',
+  link: '#0B5FFF',
+  linkHover: '#6397ff',
 
   header: {
     background: '#00256C',

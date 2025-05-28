@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const LayoutContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.background};
@@ -11,7 +10,7 @@ export const LayoutContainer = styled.div`
 
 export const MainContent = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-direction: row;

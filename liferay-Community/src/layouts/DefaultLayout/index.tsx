@@ -4,55 +4,64 @@ import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { LayoutContainer, MainContent, ContentWrapper } from "./styles";
 import { useEffect, useState } from "react";
 import { CommunityCreation } from "../../components/ModalCreateCommunity/CommunityCreation";
-import bannerJava from "../../assets/BannerJava.jpg"
+import bannerJava from "../../assets/BannerJava.jpg";
+import bannerEnglishStudants from "../../assets/BannerING.jpg";
+import bannerVolei from "../../assets/BannerVolei.jpg"
 import { v4 } from "uuid";
-
 
 export function DefaultLayout() {
   const [communities, setCommunities] = useState<CardsProps[]>([]);
 
   useEffect(() => {
-  const saved = localStorage.getItem("communities");
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      setCommunities(parsed);
-    } catch (error) {
-      console.error("Erro ao ler communities do localStorage:", error);
-      localStorage.removeItem("communities"); // limpa o dado inválido
+    const saved = localStorage.getItem("communities");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setCommunities(parsed);
+      } catch (error) {
+        console.error("Erro ao ler communities do localStorage:", error);
+        localStorage.removeItem("communities");
+        setCommunities([]);
+      }
+    } else {
       setCommunities([
         {
           id: v4(),
           cover: bannerJava,
-          title: "Java Developer",
+          title: "Java Developers",
           description:
             "Este grupo é dedicado a estudantes e profissionais que querem aprender e evoluir no desenvolvimento com Java.",
           members: 1,
           category: "Leitura e Ensino",
           joined: false,
         },
+        {
+          id: v4(),
+          cover: bannerEnglishStudants,
+          title: "English Studants",
+          description:
+            "Se você quer melhorar seu inglês, este é o lugar certo. Aqui praticamos conversação, trocamos dicas de gramática, vocabulário e expressões cotidianas.",
+          members: 1,
+          category: "Leitura e Ensino",
+          joined: false,
+        },
+        {
+          id: v4(),
+          cover: bannerVolei,
+          title: "Jogadores de Vôlei",
+          description:
+            "Para quem ama vôlei e quer trocar experiências sobre o esporte. Aqui você pode discutir técnicas, estratégias de jogo, acompanhar campeonatos.",
+          members: 1,
+          category: "Esportes",
+          joined: false,
+        },
       ]);
     }
-  } else {
-    setCommunities([
-      {
-        id: "78c276a3-dd84-4298-a822-9fc668efe0d4",
-        cover: bannerJava,
-        title: "Java Developer",
-        description:
-          "Este grupo é dedicado a estudantes e profissionais que querem aprender e evoluir no desenvolvimento com Java.",
-        members: 1,
-        category: "Leitura e Ensino",
-        joined: false,
-      },
-    ]);
-  }
-}, []);
-
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleAddCommunity = (newCommunity : Omit<CardsProps, "joined">) => {
+  const handleAddCommunity = (newCommunity: Omit<CardsProps, "joined">) => {
     setCommunities((prev) => [...prev, { ...newCommunity, joined: true }]);
   };
 
@@ -73,7 +82,10 @@ export function DefaultLayout() {
     <LayoutContainer>
       <Header />
       <MainContent>
-        <Sidebar openModal={openModal} communities={communities.filter(c => c.joined)} />
+        <Sidebar
+          openModal={openModal}
+          communities={communities.filter((c) => c.joined)}
+        />
         <ContentWrapper>
           <Outlet
             context={{
