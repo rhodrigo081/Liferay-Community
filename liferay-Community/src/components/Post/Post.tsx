@@ -19,15 +19,21 @@ interface Author {
   username: string;
 }
 
-interface Content {
+interface ContentItem {
   type: "paragraph" | "link";
   content: string;
+}
+
+interface Comment {
+  id: string;
+  content: string;
+  publishedAt: Date;
 }
 
 interface PostProps {
   author: Author;
   publishedAt: Date;
-  content: Content[];
+  content: ContentItem[];
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
@@ -44,21 +50,24 @@ export function Post({ author, publishedAt, content }: PostProps) {
     addSuffix: true,
   });
 
-  const [comments, setComments] = useState<string[]>(() => {
-    const storedComments = localStorage.getItem("comments")
-    return storedComments ? JSON.parse(storedComments) : []
-  });
-
-  useEffect(() => { 
-    localStorage.setItem("comments", JSON.stringify(comments))
-  }, [comments]);
-
+  // Removido localStorage e usando apenas estado local
+  const [comments, setComments] = useState<Comment[]>([]);
   const [newCommentText, setNewCommentText] = useState("");
 
   function handleNewComment(event: React.FormEvent) {
     event.preventDefault();
+    
+    if (newCommentText.trim() === "") {
+      return;
+    }
 
-    setComments([...comments, newCommentText]);
+    const newComment: Comment = {
+      id: Date.now().toString(), // ID simples baseado em timestamp
+      content: newCommentText.trim(),
+      publishedAt: new Date()
+    };
+
+    setComments(prevComments => [...prevComments, newComment]);
     setNewCommentText("");
   }
 
@@ -67,15 +76,13 @@ export function Post({ author, publishedAt, content }: PostProps) {
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(commentToDelete) {
-    const commentWithoutDeleteOne = comments.filter((comment) => {
-      return comment !== commentToDelete;
-    });
-
-    setComments(commentWithoutDeleteOne);
+  function deleteComment(commentToDelete: string) {
+    setComments(prevComments => 
+      prevComments.filter(comment => comment.id !== commentToDelete)
+    );
   }
 
-  const isNewCommentEmpty = newCommentText.length === 0;
+  const isNewCommentEmpty = newCommentText.trim().length === 0;
 
   return (
     <PostContainer>
@@ -105,7 +112,6 @@ export function Post({ author, publishedAt, content }: PostProps) {
         })}
       </Content>
       <FeedBack>
-        {" "}
         <button>
           <FaRegHeart /> 0
         </button>
@@ -130,12 +136,13 @@ export function Post({ author, publishedAt, content }: PostProps) {
         </footer>
       </CommentForm>
       <>
-        {comments.map((comment, index) => {
+        {comments.map((comment) => {
           return (
             <CommentArea
-              key={index}
-              content={comment}
-              onDeleteComment={deleteComment}
+              key={comment.id}
+              content={comment.content}
+              publishedAt={comment.publishedAt}
+              onDeleteComment={() => deleteComment(comment.id)}
             />
           );
         })}

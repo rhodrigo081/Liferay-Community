@@ -9,6 +9,7 @@ interface CommunityCardData {
   description: string;
   members: number;
   category: string;
+  joined: boolean; // Adicionada a propriedade joined
 }
 
 interface CommunitySectionProps {

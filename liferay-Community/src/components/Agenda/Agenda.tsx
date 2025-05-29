@@ -1,4 +1,4 @@
-/* eslint-disable no-irregular-whitespace */
+
 import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
@@ -30,7 +30,7 @@ interface AgendaItem {
   time: string;
   title: string;
   location: string;
-  canDelete?: boolean; // Flag para indicar se o evento pode ser deletado
+  canDelete?: boolean; 
 }
 
 export function Agenda() {
@@ -41,7 +41,7 @@ export function Agenda() {
       time: "19:00 - 20:30",
       title: "Workshop: Spring Boot 3.0 - Novidades e Migração",
       location: "Sala Virtual - Zoom",
-      canDelete: false, // Evento padrão - não pode ser deletado
+      canDelete: false, 
     },
 
     {
@@ -50,7 +50,7 @@ export function Agenda() {
       time: "20:45 - 21:30",
       title: "Mesa Redonda: Carreira em Java - Do Júnior ao Sênior",
       location: "Discord - Canal Voz",
-      canDelete: false, // Evento padrão - não pode ser deletado
+      canDelete: false, 
     },
 
     {
@@ -59,7 +59,7 @@ export function Agenda() {
       time: "13:45 - 16:30",
       title: "Networking: Conectando Devs Java da Comunidade",
       location: "Empresarial liferay - Recife",
-      canDelete: false, // Evento padrão - não pode ser deletado
+      canDelete: false, 
     },
 
     {
@@ -68,7 +68,7 @@ export function Agenda() {
       time: "19:00 - 20:00",
       title: "Webinar: Reactive Programming com Project Reactor",
       location: "Zoom Webinar",
-      canDelete: false, // Evento padrão - não pode ser deletado
+      canDelete: false, 
     },
 
     {
@@ -77,7 +77,7 @@ export function Agenda() {
       time: "18:00 - 21:00",
       title: "Bootcamp: Do Zero ao Deploy - Aplicação Java Completa",
       location: "DevSpace - Coworking Tech",
-      canDelete: false, // Evento padrão - não pode ser deletado
+      canDelete: false, 
     },
   ]);
 
@@ -284,7 +284,7 @@ export function Agenda() {
                              {" "}
                 </AgendaEventDetails>
                              {" "}
-                {/* Só mostra o botão de deletar se o evento pode ser deletado */}
+
                 {event.canDelete && (
                   <DeleteButton 
                     onClick={() => handleDeleteEvent(event.id)}

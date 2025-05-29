@@ -31,8 +31,18 @@ export function CommunityCard({
   onJoin = () => {},
   onCategoryClick = () => {},
 }: CommunityCardProps) { 
-  function handleJoinCommunity(communityId: string) {
+  function handleJoinCommunity(communityId: string, event: React.MouseEvent) {
+    // Previne a navegação quando clica no botão
+    event.preventDefault();
+    event.stopPropagation();
     onJoin(communityId);
+  }
+
+  function handleCategoryClick(category: string, event: React.MouseEvent) {
+    // Previne a navegação quando clica na categoria
+    event.preventDefault();
+    event.stopPropagation();
+    onCategoryClick?.(category);
   }
 
   return (
@@ -55,11 +65,9 @@ export function CommunityCard({
               </Text>
               <Text>
                 <Category
-                 
-                  onClick={(e: React.MouseEvent<HTMLDivElement>) => { 
-                    onCategoryClick?.(card.category);
-                    e.preventDefault();
-                  }}
+                  onClick={(e: React.MouseEvent<HTMLDivElement>) => 
+                    handleCategoryClick(card.category, e)
+                  }
                 >
                   {card.category}
                 </Category>
@@ -70,7 +78,9 @@ export function CommunityCard({
                 {!card.joined && (
                   <button
                     className="join-button"
-                    onClick={() => handleJoinCommunity(card.id)}
+                    onClick={(e: React.MouseEvent) => 
+                      handleJoinCommunity(card.id, e)
+                    }
                   >
                     Entrar
                   </button>

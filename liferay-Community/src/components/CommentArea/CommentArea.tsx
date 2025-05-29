@@ -11,10 +11,9 @@ import React from 'react';
 import { formatDistanceToNow } from 'date-fns'; 
 import { ptBR } from 'date-fns/locale'; 
 
-
 interface CommentAreaProps {
   content: string;
-  onDeleteComment: (commentContent: string) => void;
+  onDeleteComment: () => void; // Simplificado
   publishedAt: Date; 
 }
 
@@ -22,10 +21,9 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
   
   function handleDeleteComment(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    onDeleteComment(content);
+    onDeleteComment(); // Agora não precisa passar parâmetro
   }
 
-  
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR, 
     addSuffix: true, 
@@ -43,7 +41,6 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
                 <span>@rhodrigo081</span>
               </div>
               <time
-                // Usar publishedAt para o title e dateTime
                 title={publishedAt.toLocaleDateString('pt-BR', {
                     day: '2-digit',
                     month: 'long',
@@ -53,7 +50,7 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
                 })}
                 dateTime={publishedAt.toISOString()}
               >
-                {publishedDateRelativeToNow} {/* Exibir a data formatada */}
+                {publishedDateRelativeToNow}
               </time>
             </AuthorAndTime>
             <ButtonDelete onClick={handleDeleteComment}>
