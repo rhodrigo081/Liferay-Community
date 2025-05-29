@@ -99,9 +99,21 @@ export const AgendaEventItem = styled.div`
   gap: 1rem;
   padding: 0.8rem 0;
   border-bottom: 1px dashed ${(props) => props.theme.border}; 
+  position: relative;
 
   &:last-child {
     border-bottom: none; 
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin: 0 -0.5rem;
+    
+    button {
+      opacity: 1;
+    }
   }
 `;
 
@@ -116,6 +128,7 @@ export const AgendaEventDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  flex-grow: 1;
 `;
 
 export const AgendaEventTitle = styled.h4`
@@ -128,4 +141,36 @@ export const AgendaEventLocation = styled.span`
   color: ${(props) => props.theme.lightText};
   font-size: 0.8rem;
   font-style: italic;
+`;
+
+export const DeleteButton = styled.button`
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9rem;
+
+  &:hover {
+    background: #c82333;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
 `;

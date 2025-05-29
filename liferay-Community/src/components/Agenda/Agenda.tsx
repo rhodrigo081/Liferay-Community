@@ -1,5 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 import React, { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
 import { TabButton } from "../common/TabButton/TabButton";
 
@@ -20,6 +21,7 @@ import {
   AgendaEventDetails,
   AgendaEventTitle,
   AgendaEventLocation,
+  DeleteButton,
 } from "./styles";
 
 interface AgendaItem {
@@ -28,6 +30,7 @@ interface AgendaItem {
   time: string;
   title: string;
   location: string;
+  canDelete?: boolean; // Flag para indicar se o evento pode ser deletado
 }
 
 export function Agenda() {
@@ -38,6 +41,7 @@ export function Agenda() {
       time: "19:00 - 20:30",
       title: "Workshop: Spring Boot 3.0 - Novidades e Migração",
       location: "Sala Virtual - Zoom",
+      canDelete: false, // Evento padrão - não pode ser deletado
     },
 
     {
@@ -46,6 +50,7 @@ export function Agenda() {
       time: "20:45 - 21:30",
       title: "Mesa Redonda: Carreira em Java - Do Júnior ao Sênior",
       location: "Discord - Canal Voz",
+      canDelete: false, // Evento padrão - não pode ser deletado
     },
 
     {
@@ -54,6 +59,7 @@ export function Agenda() {
       time: "13:45 - 16:30",
       title: "Networking: Conectando Devs Java da Comunidade",
       location: "Empresarial liferay - Recife",
+      canDelete: false, // Evento padrão - não pode ser deletado
     },
 
     {
@@ -62,6 +68,7 @@ export function Agenda() {
       time: "19:00 - 20:00",
       title: "Webinar: Reactive Programming com Project Reactor",
       location: "Zoom Webinar",
+      canDelete: false, // Evento padrão - não pode ser deletado
     },
 
     {
@@ -70,6 +77,7 @@ export function Agenda() {
       time: "18:00 - 21:00",
       title: "Bootcamp: Do Zero ao Deploy - Aplicação Java Completa",
       location: "DevSpace - Coworking Tech",
+      canDelete: false, // Evento padrão - não pode ser deletado
     },
   ]);
 
@@ -176,111 +184,129 @@ export function Agenda() {
         time: newEvent.eventTime,
         title: newEvent.eventName,
         location: newEvent.eventLocation || "Online",
+        canDelete: true, // Eventos criados pelo usuário podem ser deletados
       },
     ]);
 
     setIsModalOpen(false);
   };
 
+  const handleDeleteEvent = (eventId: string) => {
+    if (window.confirm("Tem certeza que deseja excluir este evento?")) {
+      setMockAgenda((prevAgenda) => 
+        prevAgenda.filter((event) => event.id !== eventId)
+      );
+    }
+  };
+
   return (
     <AgendaContainer>
-           {" "}
+           {" "}
       <AgendaHeader>
-                <h2>AGENDA</h2>       {" "}
+                <h2>AGENDA</h2>       {" "}
         <AgendaExportButton onClick={() => setIsModalOpen(true)}>
           Criar evento
         </AgendaExportButton>
-             {" "}
+             {" "}
       </AgendaHeader>
-           {" "}
+           {" "}
       <AgendaFilterBar>
-               {" "}
+               {" "}
         <TabButton
           isActive={filter === "Hoje"}
           onClick={() => setFilter("Hoje")}
         >
-                    Hoje        {" "}
+                    Hoje        {" "}
         </TabButton>
-               {" "}
+               {" "}
         <TabButton
           isActive={filter === "Amanhã"}
           onClick={() => setFilter("Amanhã")}
         >
-                    Amanhã        {" "}
+                    Amanhã        {" "}
         </TabButton>
-               {" "}
+               {" "}
         <TabButton
           isActive={filter === "Esta Semana"}
           onClick={() => setFilter("Esta Semana")}
         >
-                    Esta Semana        {""}
+                    Esta Semana        {""}
         </TabButton>
-               {" "}
+               {" "}
         <TabButton
           isActive={filter === "Próximos"}
           onClick={() => setFilter("Próximos")}
         >
-                    Próximos        {" "}
+                    Próximos        {" "}
         </TabButton>
-               {" "}
+               {" "}
         <TabButton
           isActive={filter === "Todos os eventos"}
           onClick={() => setFilter("Todos os eventos")}
         >
-                    Todos os eventos        {" "}
+                    Todos os eventos        {" "}
         </TabButton>
-               {" "}
+               {" "}
         <AgendaSearchInput
           type="search"
           placeholder="Pesquise..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-             {" "}
+             {" "}
       </AgendaFilterBar>
-           {" "}
+           {" "}
       <AgendaEventList>
-               {" "}
+               {" "}
         {filteredAndSortedAgenda.length === 0 ? (
           <div style={{ textAlign: "center", padding: "2rem", color: "#666" }}>
-                        Nenhum evento encontrado para "{filter}"            {" "}
-            {searchTerm && ` com o termo "${searchTerm}"`}         {" "}
+                        Nenhum evento encontrado para "{filter}"            {" "}
+            {searchTerm && ` com o termo "${searchTerm}"`}         {" "}
           </div>
         ) : (
           filteredAndSortedAgenda.map((event, index, array) => (
             <React.Fragment key={event.id}>
-                           {" "}
+                           {" "}
               {(index === 0 || event.date !== array[index - 1].date) && (
                 <AgendaDateSeparator>
                   {formatDisplayDate(event.date)}
                 </AgendaDateSeparator>
               )}
-                           {" "}
+                           {" "}
               <AgendaEventItem>
-                                <AgendaEventTime>{event.time}</AgendaEventTime> 
-                             {" "}
+                                <AgendaEventTime>{event.time}</AgendaEventTime> 
+                             {" "}
                 <AgendaEventDetails>
-                                   {" "}
-                  <AgendaEventTitle>{event.title}</AgendaEventTitle>           
-                       {" "}
-                  <AgendaEventLocation>{event.location}</AgendaEventLocation>   
-                             {" "}
+                                   {" "}
+                  <AgendaEventTitle>{event.title}</AgendaEventTitle>           
+                       {" "}
+                  <AgendaEventLocation>{event.location}</AgendaEventLocation>   
+                             {" "}
                 </AgendaEventDetails>
-                             {" "}
+                             {" "}
+                {/* Só mostra o botão de deletar se o evento pode ser deletado */}
+                {event.canDelete && (
+                  <DeleteButton 
+                    onClick={() => handleDeleteEvent(event.id)}
+                    title="Excluir evento"
+                  >
+                    <FaTrash />
+                  </DeleteButton>
+                )}
               </AgendaEventItem>
-                         {" "}
+                         {" "}
             </React.Fragment>
           ))
         )}
-             {" "}
+             {" "}
       </AgendaEventList>
-           {" "}
+           {" "}
       <CreateEventModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onCreateEvent={handleCreateEvent}
       />
-         {" "}
+         {" "}
     </AgendaContainer>
   );
 }
