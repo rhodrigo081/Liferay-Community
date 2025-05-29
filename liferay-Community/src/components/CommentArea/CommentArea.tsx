@@ -7,12 +7,29 @@ import {
 } from "./styles";
 import userImage from "../../assets/user-image.svg";
 import { FaRegTrashAlt } from "react-icons/fa";
+import React from 'react';
+import { formatDistanceToNow } from 'date-fns'; 
+import { ptBR } from 'date-fns/locale'; 
 
-export function CommentArea({ content, onDeleteComment, publishedAt }) {
-  function handleDeleteComment() {
+
+interface CommentAreaProps {
+  content: string;
+  onDeleteComment: (commentContent: string) => void;
+  publishedAt: Date; 
+}
+
+export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAreaProps) {
+  
+  function handleDeleteComment(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     onDeleteComment(content);
   }
+
+  
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR, 
+    addSuffix: true, 
+  });
 
   return (
     <CommentContainer>
@@ -26,10 +43,17 @@ export function CommentArea({ content, onDeleteComment, publishedAt }) {
                 <span>@rhodrigo081</span>
               </div>
               <time
-                title="02 de Fevereiro às 20:50"
-                dateTime="2025-02-02 20:50:20"
+                // Usar publishedAt para o title e dateTime
+                title={publishedAt.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                })}
+                dateTime={publishedAt.toISOString()}
               >
-                Cerca de 2 meses
+                {publishedDateRelativeToNow} {/* Exibir a data formatada */}
               </time>
             </AuthorAndTime>
             <ButtonDelete onClick={handleDeleteComment}>

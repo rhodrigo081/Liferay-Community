@@ -8,6 +8,7 @@ import {
   Category,
 } from "./styles";
 import { FaCircle } from "react-icons/fa";
+import React from "react"; 
 
 interface CardsProps {
   id: string;
@@ -29,7 +30,7 @@ export function CommunityCard({
   cards = [],
   onJoin = () => {},
   onCategoryClick = () => {},
-}) {
+}: CommunityCardProps) { 
   function handleJoinCommunity(communityId: string) {
     onJoin(communityId);
   }
@@ -54,7 +55,8 @@ export function CommunityCard({
               </Text>
               <Text>
                 <Category
-                  onClick={(e) => {
+                 
+                  onClick={(e: React.MouseEvent<HTMLDivElement>) => { 
                     onCategoryClick?.(card.category);
                     e.preventDefault();
                   }}

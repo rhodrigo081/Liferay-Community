@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import React from 'react'; 
 import {
   ModalContainer,
   ModalContent,
@@ -34,8 +35,8 @@ export function CommunityCreation({
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
 
-  const handleUpdateImage = (e) => {
-    const file = e.target.files[0];
+  const handleUpdateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]; 
     if (file && file.type.startsWith("image")) {
       setImage(URL.createObjectURL(file));
     } else {
@@ -60,6 +61,7 @@ export function CommunityCreation({
       description,
       members: 1,
       category,
+      joined: false
     });
     closeModal();
   };
@@ -72,7 +74,7 @@ export function CommunityCreation({
         </h1>
 
         <PictureArea
-          onClick={(event) => {
+          onClick={() => {
             fileInputRef.current?.click();
           }}
         >
