@@ -4,7 +4,7 @@ import { StyledTabButton as CommonTabButton } from "../common/TabButton/styles";
 export const AgendaContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   gap: 1.5rem;
   background: ${(props) => props.theme.communityCard.background}; 
   border-radius: 24px;

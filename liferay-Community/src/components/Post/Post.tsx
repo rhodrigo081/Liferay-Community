@@ -126,7 +126,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
           required
         />
         <footer className={isNewCommentEmpty ? "hidden" : "visible"}>
-          <SubmitButton type="submit">Publicar</SubmitButton>
+          <SubmitButton type="submit">Comentar</SubmitButton>
         </footer>
       </CommentForm>
       <>

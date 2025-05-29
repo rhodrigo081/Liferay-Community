@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(0.2rem);
   display: flex;
@@ -21,6 +21,8 @@ export const ModalContent = styled.div`
   border-radius: 35px;
   width: 40%;
   height: 90%;
+  margin-top: 0;
+  margin-bottom: 4%;
   max-width: 90%;
   display: flex;
   flex-direction: column;
@@ -183,6 +185,7 @@ export const ButtonGroup = styled.div`
   button {
     font-size: 24px;
     font-weight: 700;
+    margin-top: 0.5rem;
     width: 11.5rem;
     height: 2.8rem;
     border-radius: 8px;
