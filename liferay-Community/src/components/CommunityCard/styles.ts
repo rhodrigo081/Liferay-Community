@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const CardsGrid = styled.div`
-  margim: auto;
+  
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.35rem;
-  height: 100%;
+  height: 90%;
+  width: 90%;
   
 
   a{
