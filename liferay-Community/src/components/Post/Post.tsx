@@ -9,8 +9,9 @@ import {
   SubmitButton,
 } from "./styles";
 import { ptBR } from "date-fns/locale/pt-BR";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegHeart, FaRegComment, FaRegPaperPlane } from "react-icons/fa";
+import { CommentArea } from "../CommentArea/CommentArea";
 
 interface Author {
   image: string;
@@ -43,7 +44,14 @@ export function Post({ author, publishedAt, content }: PostProps) {
     addSuffix: true,
   });
 
-  const [comments, setComments] = useState<string[]>([]);
+  const [comments, setComments] = useState<string[]>(() => {
+    const storedComments = localStorage.getItem("comments")
+    return storedComments ? JSON.parse(storedComments) : []
+  });
+
+  useEffect(() => { 
+    localStorage.setItem("comments", JSON.stringify(comments))
+  }, [comments]);
 
   const [newCommentText, setNewCommentText] = useState("");
 
@@ -57,6 +65,14 @@ export function Post({ author, publishedAt, content }: PostProps) {
   function handleCommentChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentWithoutDeleteOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+
+    setComments(commentWithoutDeleteOne);
   }
 
   const isNewCommentEmpty = newCommentText.length === 0;
@@ -113,11 +129,17 @@ export function Post({ author, publishedAt, content }: PostProps) {
           <SubmitButton type="submit">Publicar</SubmitButton>
         </footer>
       </CommentForm>
-      <ul>
-        {comments.map((comment, index) => (
-          <li key={index}>{comment}</li>
-        ))}
-      </ul>
+      <>
+        {comments.map((comment, index) => {
+          return (
+            <CommentArea
+              key={index}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          );
+        })}
+      </>
     </PostContainer>
   );
 }

@@ -35,17 +35,11 @@ export const Sidebar = styled.aside`
     width: 100%;
   }
 `;
+
 export const SidebarHeader = styled.div`
   font-size: 20px;
   font-weight: bold;
   color: ${({ theme }) => theme.name};
-  width: 100%;
-
-  h2{
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis
-  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -61,26 +55,42 @@ export const HR = styled.hr`
   width: auto;
 `;
 
+export const Main = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+`;
+
 export const NavSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 `;
 
 export const NavItem = styled.button`
   background: none;
   border: none;
   color: ${({ theme }) => theme.lightText};
-  font-size: 14px;
-  text-align: left;
+  font-size: 16px;
+  text-align: center;
   cursor: pointer;
-  padding: 8px;
+  width: 100%;
+  height: 3rem;
   border-radius: 6px;
+  transition: all 0.2s ease;
 
   &:hover {
     background-color: ${({ theme }) => theme.hoverBackground};
     color: ${({ theme }) => theme.text};
+  }
+
+  &.active {
+    background-color: ${({ theme }) => theme.communityCard.button};
+    color: white;
+    font-weight: 600;
   }
 `;
 
@@ -108,7 +118,7 @@ export const Banner = styled.div`
   width: 100%;
   height: 22rem;
   overflow: hidden;
-  border-radius: 48px;
+  border-radius: 40px;
 
   img {
     width: 100%;
@@ -165,7 +175,6 @@ export const ForumContainer = styled.div`
 export const ChatPanel = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
   .chatHeader h3 {
     font-size: 16px;

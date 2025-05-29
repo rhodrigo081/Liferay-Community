@@ -7,20 +7,20 @@ import {
   CommunityTitle,
   JoinButton,
   ForumContainer,
-  SectionTitle,
   ChatPanel,
   LayoutWrapper,
   Sidebar,
   SidebarHeader,
   NavSection,
   NavItem,
-  ChannelList,
-  ChannelItem,
   HR,
+  Main
 } from "./styles";
 import { Post } from "../../components/Post/Post";
-import userImage from "../../assets/user-image.svg"
+import userImage from "../../assets/user-image.svg";
 
+import { Agenda } from "../../components/Agenda/Agenda";
+import { useState } from "react";
 
 interface CardsProps {
   id: string;
@@ -77,49 +77,89 @@ export function CommunityPage() {
     },
   ];
 
-  return (
-    <MainContainer>
-      <LayoutWrapper>
-        {/* Sidebar */}
-        <Sidebar>
-          <SidebarHeader>
-            <h2>{community.title}</h2>
-          </SidebarHeader>
-          <hr />
-          <SectionTitle>Agenda</SectionTitle>
-        </Sidebar>
+  const [activeView, setActiveView] = useState<"forum" | "agenda">("forum");
 
-        {/* Conteúdo principal */}
-        <div className="mainCommunity">
+  const renderContent = () => {
+    if (activeView === "agenda") {
+      return (
+        <Main>
           <Banner>
-            <img src={community.cover} alt="Banner Java" />
+            <img src={community.cover} />
           </Banner>
 
           <Content>
             <ForumContainer>
               <CommunityHeader>
                 <CommunityTitle>{community.title}</CommunityTitle>
-                <JoinButton onClick={handleJoin}>
-                  {community?.joined ? "Participando" : "Participar"}
-                </JoinButton>
               </CommunityHeader>
               <HR />
             </ForumContainer>
+            <Agenda />
+          </Content>
+        </Main>
+      );
+    }
 
-            <ChatPanel>
-              {posts.map((post) => {
-                return(
+    return (
+      <Main>
+        <Banner>
+          <img src={community.cover} />
+        </Banner>
+
+        <Content>
+          <ForumContainer>
+            <CommunityHeader>
+              <CommunityTitle>{community.title}</CommunityTitle>
+              <JoinButton onClick={handleJoin}>
+                {community?.joined ? "Participando" : "Participar"}
+              </JoinButton>
+            </CommunityHeader>
+            <HR />
+          </ForumContainer>
+
+          <ChatPanel>
+            {posts.map((post) => {
+              return (
                 <Post
                   key={post.id}
                   author={post.author}
                   content={post.content}
                   publishedAt={post.publishedAt}
                 />
-                )
-              })}
-            </ChatPanel>
-          </Content>
-        </div>
+              );
+            })}
+          </ChatPanel>
+        </Content>
+      </Main>
+    );
+  };
+
+  return (
+    <MainContainer>
+      <LayoutWrapper>
+        {/* Sidebar */}
+        <Sidebar>
+          <SidebarHeader>
+            <h2>Java Developers</h2>
+          </SidebarHeader>
+          <hr />
+
+          <NavSection>
+            <NavItem
+              onClick={() => setActiveView("forum")}
+              className={activeView === "forum" ? "active" : ""}
+            >
+              Fórum
+            </NavItem>
+            <NavItem
+              onClick={() => setActiveView("agenda")}
+              className={activeView === "agenda" ? "active" : ""}
+            >
+              Agenda
+            </NavItem>
+          </NavSection>
+        </Sidebar>
+        <div style={{ flex: 1 }}>{renderContent()}</div>
       </LayoutWrapper>
     </MainContainer>
   );

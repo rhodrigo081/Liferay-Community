@@ -13,11 +13,6 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
     }
 
-    :focus{
-        outline: 0;
-        box-sizing: 0 0 0 2px ${props => props.theme.border};
-    }
-
     body{
         background: ${props => props.theme.background};
         color: ${props => props.theme.text};

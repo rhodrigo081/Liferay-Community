@@ -17,8 +17,9 @@ export const PostContainer = styled.div`
     time {
       width: 10%;
       font-size: 12px;
-      color: ${({ theme }) => theme.lightText};
+      color: ${(props) => props.theme.lightText};
     }
+
     footer {
       visibility: hidden;
       max-height: 0;
@@ -122,6 +123,11 @@ export const CommentForm = styled.form`
     transform: translateY(0);
     pointer-events: auto;
   }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px ${(props) => props.theme.border};
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -133,6 +139,8 @@ export const TextArea = styled.textarea`
   background: ${({ theme }) => theme.hoverBackground};
   color: ${({ theme }) => theme.title};
   font-size: 14px;
+  line-height: 1.4;
+  margin-top: 1rem;
 `;
 
 export const SubmitButton = styled.button`
@@ -158,3 +166,4 @@ export const SubmitButton = styled.button`
     cursor: not-allowed;
   }
 `;
+

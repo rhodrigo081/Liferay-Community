@@ -4,9 +4,10 @@ import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { LayoutContainer, MainContent, ContentWrapper } from "./styles";
 import { useEffect, useState } from "react";
 import { CommunityCreation } from "../../components/ModalCreateCommunity/CommunityCreation";
-import bannerJava from "../../assets/BannerJava.jpg";
-import bannerEnglishStudants from "../../assets/BannerING.jpg";
-import bannerVolei from "../../assets/BannerVolei.jpg"
+import bannerJava from "../../assets/Java-Developers.svg";
+import bannerEnglishStudants from "../../assets/English-Studants.svg";
+import bannerVolei from "../../assets/Jogadores-de-Volei.svg";
+import csGo from "../../assets/CS-Go.svg";
 import { v4 } from "uuid";
 
 export function DefaultLayout() {
@@ -31,7 +32,7 @@ export function DefaultLayout() {
           title: "Java Developers",
           description:
             "Este grupo é dedicado a estudantes e profissionais que querem aprender e evoluir no desenvolvimento com Java.",
-          members: 1,
+          members: 107,
           category: "Leitura e Ensino",
           joined: false,
         },
@@ -41,7 +42,7 @@ export function DefaultLayout() {
           title: "English Studants",
           description:
             "Se você quer melhorar seu inglês, este é o lugar certo. Aqui praticamos conversação, trocamos dicas de gramática, vocabulário e expressões cotidianas.",
-          members: 1,
+          members: 120,
           category: "Leitura e Ensino",
           joined: false,
         },
@@ -51,8 +52,18 @@ export function DefaultLayout() {
           title: "Jogadores de Vôlei",
           description:
             "Para quem ama vôlei e quer trocar experiências sobre o esporte. Aqui você pode discutir técnicas, estratégias de jogo, acompanhar campeonatos.",
-          members: 1,
+          members: 76,
           category: "Esportes",
+          joined: false,
+        },
+        {
+          id: v4(),
+          cover: csGo,
+          title: "CS:GO.BR",
+          description:
+            "Se Counter-Strike é o seu jogo favorito, este grupo foi feito para você. Monte times, jogue partidas competitivas, troque dicas sobre configurações e estratégias, além de acompanhar as novidades do cenário profissional.",
+          members: 90,
+          category: "Jogos",
           joined: false,
         },
       ]);
