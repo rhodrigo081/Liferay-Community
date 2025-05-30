@@ -41,7 +41,6 @@ export const darkTheme = {
       text: '#F9F9FB',
       pictureArea: '#0B5FFF',
       inputBorder: '#DCDDE4',
-      cancel: '',
     },
 
     communityCard: {

@@ -37,8 +37,8 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
           <header>
             <AuthorAndTime>
               <div>
-                <strong>Rhodrigo Rodrigues</strong>
-                <span>@rhodrigo081</span>
+                <strong>Carlos Eduardo</strong>
+                <span>Carlos Eduardo</span>
               </div>
               <time
                 title={publishedAt.toLocaleDateString('pt-BR', {

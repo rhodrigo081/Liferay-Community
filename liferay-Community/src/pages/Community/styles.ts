@@ -6,15 +6,18 @@ export const MainContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   height: 100%;
+  width: 100%;
 `;
 
 /* Wrapper que divide sidebar e conteúdo */
 export const LayoutWrapper = styled.div`
   display: flex;
+  flex: 1;
   height: 100%;
-  .mainCommunity {
-    width: 100%;
-    padding: 1rem;
+  width: 100%;
+
+  .mainCommunity{
+    flex: 1;
   }
 `;
 
@@ -26,7 +29,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 100rem;
   gap: 2rem;
 
   hr {
@@ -153,19 +156,58 @@ export const CommunityTitle = styled.h1`
 `;
 
 export const JoinButton = styled.button`
-  background-color: ${({ theme }) => theme.communityCard.button};
+  position: relative;
+  overflow: hidden;
+
+  background: ${({ theme }) => theme.communityCard.button};
   color: white;
   border: none;
-  padding: 12px 50px;
+  width: 12rem;
+  height: 2.5rem;
   font-weight: bold;
   border-radius: 8px;
   font-size: 24px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.hoverIcon};
+  &:hover{
+    background-color: ${({theme}) => theme.linkHover};
+  }
+
+  &.joined {
+    background: ${({ theme }) => theme.border}; 
+  }
+
+  &.joined.leave {
+    background: ${({ theme }) => theme.danger}; 
+  }
+
+  .btn-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+  }
+
+  .btn-text.default {
+    opacity: 1;
+  }
+
+  &.leave .btn-text.default {
+    opacity: 0;
+  }
+
+  .btn-text.hover {
+    opacity: 0;
+  }
+
+  &.leave .btn-text.hover {
+    opacity: 1;
   }
 `;
+
 
 export const ForumContainer = styled.div`
   margin-bottom: 30px;
@@ -175,6 +217,7 @@ export const ForumContainer = styled.div`
 export const ChatPanel = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 
   .chatHeader h3 {
     font-size: 16px;

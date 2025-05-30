@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
 export const CardsGrid = styled.div`
-  
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.35rem;
-  height: 90%;
-  width: 90%;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
   
+  @media (max-width: 1360px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.35rem;
+    height: 90%;
+    width: 90%;
+  }
 
-  a{
+  a {
     text-decoration: none;
   }
 `;
@@ -26,8 +31,6 @@ export const Card = styled.div`
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in;
   align-items: center;
-  
-
 
   img {
     object-fit: cover;
@@ -58,7 +61,6 @@ export const Text = styled.div`
   max-height: 4.1rem;
   overflow-wrap: break-word;
   word-break: break-word;
-  
 
   strong {
     font-size: 16px;
@@ -84,8 +86,8 @@ export const CardFooter = styled.div`
   position: absolute;
   top: 85%;
   left: 3%;
-  
-  div{
+
+  div {
     display: flex;
     align-items: center;
     min-width: 7.5rem;
@@ -115,7 +117,6 @@ export const CardFooter = styled.div`
     justify-content: center;
     gap: 0.3rem;
     font-size: 12px;
-
   }
 `;
 

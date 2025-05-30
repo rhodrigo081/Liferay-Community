@@ -86,6 +86,16 @@ export function DefaultLayout() {
     );
   };
 
+  const handleLeaveCommunityUpdate = (communityId: string) => {
+    setCommunities((prev) =>
+      prev.map((community) => {
+        return community.id === communityId
+          ? { ...community, members: community.members - 1, joined: false }
+          : community;
+      })
+    );
+  };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -103,6 +113,7 @@ export function DefaultLayout() {
               communities,
               handleAddCommunity,
               handleJoinCommunityUpdate,
+              handleLeaveCommunityUpdate,
             }}
           />
           {isModalOpen && (

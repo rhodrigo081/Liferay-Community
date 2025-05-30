@@ -1,152 +1,51 @@
-import { format, formatDistanceToNow } from "date-fns";
-import {
-  PostContainer,
-  AuthorInfo,
-  Content,
-  CommentForm,
-  FeedBack,
-  TextArea,
-  SubmitButton,
-} from "./styles";
-import { ptBR } from "date-fns/locale/pt-BR";
-import { useEffect, useState } from "react";
-import { FaRegHeart, FaRegComment, FaRegPaperPlane } from "react-icons/fa";
-import { CommentArea } from "../CommentArea/CommentArea";
-
-interface Author {
-  image: string;
-  name: string;
-  username: string;
-}
-
-interface ContentItem {
-  type: "paragraph" | "link";
-  content: string;
-}
-
-interface Comment {
-  id: string;
-  content: string;
-  publishedAt: Date;
-}
+import { PostButton, PostContainer, PostForm, TextArea } from "./styles";
+import userImage from "../../assets/user-image.svg";
+import { useState } from "react";
 
 interface PostProps {
-  author: Author;
-  publishedAt: Date;
-  content: ContentItem[];
+  onPostCreate: (post: {
+    author: {
+      image: string;
+      name: string;
+      username: string;
+    };
+    content: { type: "paragraph"; content: string }[];
+    publishedAt: Date;
+  }) => void;
 }
 
-export function Post({ author, publishedAt, content }: PostProps) {
-  const publishedDateFormate = format(
-    publishedAt,
-    "d 'de' LLLL 'ás' HH:mm'h'",
-    {
-      locale: ptBR,
-    }
-  );
+export function Post({ onPostCreate }: PostProps) {
+  const [content, setContent] = useState("");
 
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
-    locale: ptBR,
-    addSuffix: true,
-  });
-
-  // Removido localStorage e usando apenas estado local
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newCommentText, setNewCommentText] = useState("");
-
-  function handleNewComment(event: React.FormEvent) {
+  function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    
-    if (newCommentText.trim() === "") {
-      return;
-    }
 
-    const newComment: Comment = {
-      id: Date.now().toString(), // ID simples baseado em timestamp
-      content: newCommentText.trim(),
-      publishedAt: new Date()
-    };
+    if (content.trim() === "") return;
 
-    setComments(prevComments => [...prevComments, newComment]);
-    setNewCommentText("");
+    onPostCreate({
+      author: {
+        image: userImage,
+        name: "Carlos Eduardo",
+        username: "@CarlosEduardo",
+      },
+      content: [{ type: "paragraph", content: content }],
+      publishedAt: new Date(),
+    });
+
+    setContent(""); // Limpa o campo de texto após enviar
   }
-
-  function handleCommentChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    event.target.setCustomValidity("");
-    setNewCommentText(event.target.value);
-  }
-
-  function deleteComment(commentToDelete: string) {
-    setComments(prevComments => 
-      prevComments.filter(comment => comment.id !== commentToDelete)
-    );
-  }
-
-  const isNewCommentEmpty = newCommentText.trim().length === 0;
 
   return (
     <PostContainer>
-      <header>
-        <AuthorInfo>
-          <img src={author.image} />
-          <div>
-            <strong>{author.name}</strong>
-            <span>{author.username}</span>
-          </div>
-        </AuthorInfo>
-        <time title={publishedDateFormate} dateTime={publishedAt.toISOString()}>
-          {publishedDateRelativeToNow}
-        </time>
-      </header>
-      <Content>
-        {content.map((line, index) => {
-          if (line.type === "paragraph") {
-            return <p key={index}>{line.content}</p>;
-          } else if (line.type === "link") {
-            return (
-              <p key={index}>
-                <a href="#">{line.content}</a>
-              </p>
-            );
-          }
-        })}
-      </Content>
-      <FeedBack>
-        <button>
-          <FaRegHeart /> 0
-        </button>
-        <button>
-          <FaRegComment /> {comments.length}
-        </button>
-        <button>
-          <FaRegPaperPlane />
-        </button>
-      </FeedBack>
-      <CommentForm onSubmit={handleNewComment}>
-        <h4>Deixe seu feedback</h4>
+      <img src={userImage} alt="" />
+      <PostForm onSubmit={handleSubmit}>
         <TextArea
-          name="comment"
-          placeholder="Escreva um comentário..."
-          value={newCommentText}
-          onChange={handleCommentChange}
-          required
+          placeholder="O que você quer compartilhar hoje?"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
-        <footer className={isNewCommentEmpty ? "hidden" : "visible"}>
-          <SubmitButton type="submit">Comentar</SubmitButton>
-        </footer>
-      </CommentForm>
-      <>
-        {comments.map((comment) => {
-          return (
-            <CommentArea
-              key={comment.id}
-              content={comment.content}
-              publishedAt={comment.publishedAt}
-              onDeleteComment={() => deleteComment(comment.id)}
-            />
-          );
-        })}
-      </>
+        <PostButton type="submit">Publicar</PostButton>
+      </PostForm>
     </PostContainer>
   );
 }

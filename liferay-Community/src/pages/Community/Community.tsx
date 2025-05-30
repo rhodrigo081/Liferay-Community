@@ -1,4 +1,4 @@
-import { useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import {
   MainContainer,
   Banner,
@@ -14,13 +14,13 @@ import {
   NavSection,
   NavItem,
   HR,
-  Main
+  Main,
 } from "./styles";
-import { Post } from "../../components/Post/Post";
-import userImage from "../../assets/user-image.svg";
+import { PostArea } from "../../components/PostArea/PostArea";
 
 import { Agenda } from "../../components/Agenda/Agenda";
 import { useState } from "react";
+import { Post } from "../../components/Post/Post";
 
 interface CardsProps {
   id: string;
@@ -36,46 +36,32 @@ interface OutletContextType {
   communities: CardsProps[];
   handleAddCommunity: (newCommunity: Omit<CardsProps, "joined">) => void;
   handleJoinCommunityUpdate: (communityId: string) => void;
+  handleLeaveCommunityUpdate: (communityId: string) => void;
 }
 
 export function CommunityPage() {
   const { id: communityId } = useParams<{ id: string }>();
-  const { communities, handleJoinCommunityUpdate } =
+  const [isHovered, setIsHovered] = useState(false);
+  const { communities, handleJoinCommunityUpdate, handleLeaveCommunityUpdate } =
     useOutletContext<OutletContextType>();
 
   const community = communities.find((c) => c.id === communityId);
+  const navigate = useNavigate();
 
-  function handleJoin() {
-    if (community) {
+  function handleJoinOrLeave() {
+    if (community.joined && isHovered) {
+      handleLeaveCommunityUpdate(community.id);
+      navigate("/");
+    } else {
       handleJoinCommunityUpdate(community.id);
     }
   }
 
-  const posts = [
-    {
-      id: 1,
-      author: {
-        image: userImage,
-        name: "Rhodrigo Rodrigues",
-        username: "@rhodrigo081",
-      },
-      content: [
-        { type: "paragraph", content: "Fala galeraa 👋" },
-        {
-          type: "paragraph",
-          content:
-            "Olá! Meu nome é Rhodrigo e sou estudante do 2º período do tecnólogo em Análise e Desenvolvimento de Sistemas na FICR. ",
-        },
-        {
-          type: "paragraph",
-          content:
-            "Tenho paixão por tecnologia e desenvolvimento de software.Tenho conhecimento em Spring Boot, SQL e React, além de estar em constante aprendizado para me tornar um desenvolvedor mais completo. Atualmente, estou participando de trilhas de conhecimento e bootcamps para aprofundar minhas habilidades em desenvolvimento web e backend. Estou em busca de oportunidades para aplicar meus conhecimentos em projetos desafiadores e contribuir para soluções inovadoras.",
-        },
-        { type: "link", content: "rhodrigo081.developer/FICR" },
-      ],
-      publishedAt: new Date("2025-03-30 21:40:00"),
-    },
-  ];
+  const [posts, setPosts] = useState<PostProps[]>([]);
+
+  function handleNewPost(post: PostProps){
+    setPosts((prev) => [post, ...prev])
+  }
 
   const [activeView, setActiveView] = useState<"forum" | "agenda">("forum");
 
@@ -110,18 +96,32 @@ export function CommunityPage() {
           <ForumContainer>
             <CommunityHeader>
               <CommunityTitle>{community.title}</CommunityTitle>
-              <JoinButton onClick={handleJoin}>
-                {community?.joined ? "Participando" : "Participar"}
+              <JoinButton
+                onClick={handleJoinOrLeave}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className={`
+                  ${community?.joined ? "joined" : ""}
+                  ${community?.joined && isHovered ? "leave" : ""}
+                `}
+              >
+                <span className="btn-text default">
+                  {community?.joined ? "Participando" : "Participar"}
+                </span>
+                {community?.joined && (
+                  <span className="btn-text hover">Sair</span>
+                )}
               </JoinButton>
             </CommunityHeader>
             <HR />
           </ForumContainer>
 
           <ChatPanel>
-            {posts.map((post) => {
+            <Post onPostCreate={handleNewPost}/>
+            {posts.map((post, index) => {
               return (
-                <Post
-                  key={post.id}
+                <PostArea
+                  key={index}
                   author={post.author}
                   content={post.content}
                   publishedAt={post.publishedAt}
@@ -140,7 +140,7 @@ export function CommunityPage() {
         {/* Sidebar */}
         <Sidebar>
           <SidebarHeader>
-            <h2>Java Developers</h2>
+            <h2>{community.title}</h2>
           </SidebarHeader>
           <hr />
 
@@ -159,7 +159,7 @@ export function CommunityPage() {
             </NavItem>
           </NavSection>
         </Sidebar>
-        <div style={{ flex: 1 }}>{renderContent()}</div>
+        <div className="mainCommunity">{renderContent()}</div>
       </LayoutWrapper>
     </MainContainer>
   );

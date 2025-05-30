@@ -9,7 +9,6 @@ export function Router(){
         <Routes>
             <Route path='/' element={<DefaultLayout />}>
             <Route path='/' element={<Explore />}/>
-            <Route path='/amigos' element={<Friends />}/>
             {/* Página de comunidades */}
             <Route path='/community/:id' element={<CommunityPage />}/>
             </Route>

@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 110%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(0.2rem);
   display: flex;
@@ -21,15 +21,13 @@ export const ModalContent = styled.div`
   padding-bottom: 25%;
   border-radius: 35px;
   width: 40%;
-  height: 100%;
-  margin-top: 110%;
-  margin-bottom: 110%;
+  height: 95%;
   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 80;
-  gap: 0.25rem;
+  gap: 1rem;
 
   h1 {
     color: ${(props) => props.theme.communityCreation.text};
@@ -51,7 +49,7 @@ export const ModalContent = styled.div`
 
 export const PictureArea = styled.div`
   width: 85%;
-  height: 20%;
+  height: 90%;
   border-radius: 35px;
   color: ${(props) => props.theme.communityCreation.pictureArea};
   border: 2px dashed;

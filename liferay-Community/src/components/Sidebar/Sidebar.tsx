@@ -28,7 +28,6 @@ export function Sidebar({ openModal, communities }: SidebarProps) {
 
   const topIcons = [
     { icon: <FaRegCompass />, path: "/", index: 0 },
-    { icon: <PiUsersFill />, path: "/amigos", index: 1 },
   ];
 
   const bottomIcons = [
