@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   height: 100%;
   width: 100%;
+  gap: 1.35rem;
   
   @media (max-width: 1360px) {
     display: grid;

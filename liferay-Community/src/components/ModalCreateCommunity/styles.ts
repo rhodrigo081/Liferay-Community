@@ -21,13 +21,15 @@ export const ModalContent = styled.div`
   padding-bottom: 25%;
   border-radius: 35px;
   width: 40%;
-  height: 95%;
+  height: 105%;
+  margin-top: 105%;
+  margin-bottom: 105%;
   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 80;
-  gap: 1rem;
+  gap: 0.25rem;
 
   h1 {
     color: ${(props) => props.theme.communityCreation.text};
