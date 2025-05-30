@@ -18,17 +18,18 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   background: ${(props) => props.theme.background};
   padding: 2rem;
+  padding-bottom: 25%;
   border-radius: 35px;
   width: 40%;
-  height: 90%;
-  margin-top: 0;
-  margin-bottom: 4%;
+  height: 100%;
+  margin-top: 110%;
+  margin-bottom: 110%;
   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 90;
-  gap: 1rem;
+  z-index: 80;
+  gap: 0.25rem;
 
   h1 {
     color: ${(props) => props.theme.communityCreation.text};
@@ -178,6 +179,7 @@ export const Field = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
+  margin-top: 0;
   display: flex;
   flex-direction: row;
   gap: 2rem;
