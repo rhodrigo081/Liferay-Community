@@ -35,6 +35,7 @@ export const TextArea = styled.textarea`
   background: ${({ theme }) => theme.hoverBackground};
   color: ${({ theme }) => theme.title};
   font-size: 14px;
+  witdh: 642px;
   line-height: 1.4;
 
   &::placeholder{
@@ -47,7 +48,7 @@ export const PostButton = styled.button.attrs({ type: 'submit' })`
   width: 6rem;
   height: 2.5rem;
   position: relative;
-  left: 92%;
+  left: 90%;
   border-radius: 8px;
   border: none;
   background: ${({ theme }) => theme.communityCard.button};
