@@ -40,7 +40,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
   const [mockAgenda, setMockAgenda] = useState<AgendaItem[]>([
     {
       id: "1",
-      date: "2025-05-30",
+      date: "2025-06-06",
       time: "19:00 - 20:30",
       title: "Workshop: Spring Boot 3.0 - Novidades e Migração",
       location: "Sala Virtual - Zoom",
@@ -49,7 +49,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
 
     {
       id: "2",
-      date: "2025-05-30",
+      date: "2025-06-06",
       time: "20:45 - 21:30",
       title: "Mesa Redonda: Carreira em Java - Do Júnior ao Sênior",
       location: "Discord - Canal Voz",
@@ -58,7 +58,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
 
     {
       id: "3",
-      date: "2025-05-31",
+      date: "2025-06-07",
       time: "13:45 - 16:30",
       title: "Networking: Conectando Devs Java da Comunidade",
       location: "Empresarial liferay - Recife",
@@ -67,7 +67,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
 
     {
       id: "4",
-      date: "2025-06-03",
+      date: "2025-06-09",
       time: "19:00 - 20:00",
       title: "Webinar: Reactive Programming com Project Reactor",
       location: "Zoom Webinar",
@@ -76,7 +76,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
 
     {
       id: "5",
-      date: "2025-06-05",
+      date: "2025-06-08",
       time: "18:00 - 21:00",
       title: "Bootcamp: Do Zero ao Deploy - Aplicação Java Completa",
       location: "DevSpace - Coworking Tech",
@@ -173,10 +173,14 @@ export function Agenda({ isParticipant }: AgendaProps) {
   const handleCreateEvent = (newEvent: {
     eventName: string;
     eventDate: string;
-    eventTime: string;
+    startTime: string;
+    endTime: string;
     eventLocation: string;
   }) => {
     const newId = (mockAgenda.length + 1).toString();
+
+    // Formatar o horário no padrão "HH:MM - HH:MM"
+    const formattedTime = `${newEvent.startTime} - ${newEvent.endTime}`;
 
     setMockAgenda((prevAgenda) => [
       ...prevAgenda,
@@ -184,7 +188,7 @@ export function Agenda({ isParticipant }: AgendaProps) {
       {
         id: newId,
         date: newEvent.eventDate,
-        time: newEvent.eventTime,
+        time: formattedTime, // Usar horário formatado
         title: newEvent.eventName,
         location: newEvent.eventLocation || "Online",
         canDelete: true, // Eventos criados pelo usuário podem ser deletados
