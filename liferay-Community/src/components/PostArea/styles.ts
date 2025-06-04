@@ -165,5 +165,6 @@ export const SubmitButton = styled.button`
     opacity: 0.7;
     cursor: not-allowed;
   }
+  
 `;
 

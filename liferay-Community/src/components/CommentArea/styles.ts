@@ -31,6 +31,7 @@ export const CommentContent = styled.div`
     margin-top: 1rem;
     color: ${(props) => props.theme.text};
   }
+   
 `;
 
 export const ButtonDelete = styled.button`

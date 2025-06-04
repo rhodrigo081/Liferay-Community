@@ -21,10 +21,10 @@ export const ModalContent = styled.div`
   padding-bottom: 25%;
   border-radius: 35px;
   width: 40%;
-  height: 105%;
+  height:105%;
   margin-top: 105%;
   margin-bottom: 105%;
-  max-width: 90%;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +42,9 @@ export const ModalContent = styled.div`
 
   @media (max-width: 1360px) {
     gap: 0.5rem;
+    height:80%;
+    margin-top: 105%;
+    margin-bottom: 105%;
 
     h1{
       margin-bottom: 0.5rem;

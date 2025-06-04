@@ -12,7 +12,8 @@ export const CardsGrid = styled.div`
     grid-template-columns: repeat(3, 1fr);
     gap: 1.35rem;
     height: 90%;
-    width: 90%;
+    width: 150%;
+    
   }
 
   a {
@@ -43,6 +44,12 @@ export const Card = styled.div`
     transition: all 0.2s ease-in;
     transform: translateY(-0.4rem);
   }
+
+  @media(max-width: 1360px){
+    width: 18rem;
+
+    
+  }
 `;
 
 export const CommunityInfo = styled.div`
@@ -52,6 +59,11 @@ export const CommunityInfo = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
+
+   @media(max-width: 1360px){
+    width: 100%;
+    height: 20rem;
+  }
 `;
 
 export const Text = styled.div`
@@ -63,6 +75,8 @@ export const Text = styled.div`
   overflow-wrap: break-word;
   word-break: break-word;
 
+  
+
   strong {
     font-size: 16px;
     color: ${(props) => props.theme.communityCard.title};
@@ -73,6 +87,10 @@ export const Text = styled.div`
     text-align: justify;
     font-size: 13px;
     line-height: 1.6;
+  }
+   @media(max-width: 1360px){
+    width: 100%;
+     
   }
 `;
 
@@ -119,6 +137,10 @@ export const CardFooter = styled.div`
     gap: 0.3rem;
     font-size: 12px;
   }
+
+  @media(max-width: 1360px){
+    gap: 0.765rem;
+  }
 `;
 
 export const Category = styled.div`
@@ -135,5 +157,9 @@ export const Category = styled.div`
 
   &:hover {
     background-color: ${(props) => props.theme.communityCard.categoryHover};
+  }
+
+  @media(max-width: 1360px){
+  margin-top: 15px;
   }
 `;
