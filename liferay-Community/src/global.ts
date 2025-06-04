@@ -8,14 +8,16 @@ export const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth;
     }
 
-    html{
-        height: 100%;
-        width: 100%;
-    }
+    html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 
     body{
-        background: ${props => props.theme.background};
-        color: ${props => props.theme.text};
+        background: ${(props) => props.theme.background};
+        color: ${(props) => props.theme.text};
         height: 100%;
     }
 

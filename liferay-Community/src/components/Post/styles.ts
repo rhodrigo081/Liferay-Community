@@ -52,7 +52,7 @@ export const PostButton = styled.button.attrs({ type: 'submit' })`
   border-radius: 8px;
   border: none;
   background: ${({ theme }) => theme.communityCard.button};
-  color:  ${({ theme }) => theme.text};
+  color: #FFFF;
   font-weight: 500;
   cursor: pointer;
 

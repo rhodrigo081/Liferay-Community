@@ -14,7 +14,7 @@ export const Main = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +32,7 @@ export const FilterSide = styled.div`
 
 export const Header = styled.div`
   width: 100%;
+  padding: 0 2rem 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -4,7 +4,7 @@ export const Section = styled.div`
   width: 100%;
   
   @media (max-width: 1360px) {
-    width: 70%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

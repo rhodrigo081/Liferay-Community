@@ -15,11 +15,12 @@ import {
   NavItem,
   HR,
   Main,
+  Notice,
 } from "./styles";
 import { PostArea } from "../../components/PostArea/PostArea";
-
+import { IoChatbubbleOutline } from "react-icons/io5";
 import { Agenda } from "../../components/Agenda/Agenda";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Post } from "../../components/Post/Post";
 
 interface CardsProps {
@@ -59,8 +60,28 @@ export function CommunityPage() {
 
   const [posts, setPosts] = useState<PostProps[]>([]);
 
-  function handleNewPost(post: PostProps){
-    setPosts((prev) => [post, ...prev])
+  useEffect(() => {
+    const storedPosts = localStorage.getItem(`posts-${communityId}`);
+    if (storedPosts) {
+      try {
+        const parsed = JSON.parse(storedPosts);
+        const converted = parsed.map((post: PostProps) => ({
+          ...post,
+          publishedAt: new Date(post.publishedAt),
+        }));
+        setPosts(converted);
+      } catch (err) {
+        console.error("Erro ao carregar posts:", err);
+        setPosts([]);
+      }
+    }
+  }, [communityId]);
+
+  function handleNewPost(post: PostProps) {
+    const updatedPosts = [post, ...posts];
+    setPosts(updatedPosts);
+    localStorage.setItem(`posts-${communityId}`, JSON.stringify(updatedPosts));
+    console.log();
   }
 
   const [activeView, setActiveView] = useState<"forum" | "agenda">("forum");
@@ -77,10 +98,26 @@ export function CommunityPage() {
             <ForumContainer>
               <CommunityHeader>
                 <CommunityTitle>{community.title}</CommunityTitle>
+                <JoinButton
+                  onClick={handleJoinOrLeave}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  className={`
+                  ${community?.joined ? "joined" : ""}
+                  ${community?.joined && isHovered ? "leave" : ""}
+                `}
+                >
+                  <span className="btn-text default">
+                    {community?.joined ? "Participando" : "Participar"}
+                  </span>
+                  {community?.joined && (
+                    <span className="btn-text hover">Sair</span>
+                  )}
+                </JoinButton>
               </CommunityHeader>
               <HR />
             </ForumContainer>
-            <Agenda />
+            <Agenda isParticipant={community.joined} />
           </Content>
         </Main>
       );
@@ -117,17 +154,24 @@ export function CommunityPage() {
           </ForumContainer>
 
           <ChatPanel>
-            <Post onPostCreate={handleNewPost}/>
-            {posts.map((post, index) => {
-              return (
+            {community.joined && <Post onPostCreate={handleNewPost} />}
+
+            {posts.length > 0 ? (
+              posts.map((post) => (
                 <PostArea
-                  key={index}
+                  key={post.id}
+                  id={post.id}
                   author={post.author}
                   content={post.content}
                   publishedAt={post.publishedAt}
                 />
-              );
-            })}
+              ))
+            ) : (
+              <Notice>
+                <IoChatbubbleOutline size={124} />
+                <h1>Seja o primeiro a postar!</h1>
+              </Notice>
+            )}
           </ChatPanel>
         </Content>
       </Main>

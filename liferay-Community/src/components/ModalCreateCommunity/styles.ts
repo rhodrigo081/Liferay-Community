@@ -18,10 +18,9 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   background: ${(props) => props.theme.background};
   padding: 2rem;
-  padding-bottom: 25%;
   border-radius: 35px;
   width: 40%;
-  height: 105%;
+  height: 95%;
   margin-top: 105%;
   margin-bottom: 105%;
   max-width: 90%;
@@ -32,6 +31,7 @@ export const ModalContent = styled.div`
   gap: 0.25rem;
 
   h1 {
+    font-size: 2.5rem;
     color: ${(props) => props.theme.communityCreation.text};
     margin-bottom: 1rem;
   }
@@ -40,21 +40,31 @@ export const ModalContent = styled.div`
     color: #0b5fff;
   }
 
-  @media (max-width: 1360px) {
-    gap: 0.5rem;
+  @media (max-width: 1919px) {
+    gap: 0.2rem;
 
-    h1{
-      margin-bottom: 0.5rem;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  @media (max-width: 1380px) {
+    gap: 0.1rem;
+
+    h1 {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
     }
   }
 `;
 
 export const PictureArea = styled.div`
   width: 85%;
-  height: 90%;
+  height: 20%;
   border-radius: 35px;
   color: ${(props) => props.theme.communityCreation.pictureArea};
-  border: 2px dashed;
+  border: 0.15rem dashed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,13 +72,18 @@ export const PictureArea = styled.div`
   gap: 0.3rem;
   cursor: pointer;
   position: relative;
-  z-index: 999; 
+  z-index: 999;
   transition: all 0.3s ease-in;
 
   span {
     font-size: 1.4rem;
     font-weight: 900;
-    @media (max-width: 1360px){
+
+    @media (max-width: 1800px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 1500px) {
       font-size: 1rem;
     }
   }
@@ -83,7 +98,11 @@ export const StyledCamera = styled(TbCameraPlus)`
   font-size: 3.5rem;
   transition: transform 0.4s ease;
 
-  @media (max-width: 1360px){
+  @media (max-width: 1800px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 1500px) {
     font-size: 2rem;
   }
 `;
@@ -116,7 +135,11 @@ export const Form = styled.div`
     background: none;
     padding: 0.6rem 0.2rem 0.3rem 0.6rem;
     color: ${(props) => props.theme.communityCreation.text};
-    font-size: 16px;
+    font-size: 1rem;
+
+    @media (max-width: 1500px) {
+      font-size: 0.8rem;
+    }
   }
 
   input {
@@ -130,6 +153,14 @@ export const Form = styled.div`
     border-radius: 10px;
     height: 14.6rem;
     border: 2px solid ${(props) => props.theme.communityCreation.inputBorder};
+
+    @media (max-width: 1800px) {
+      height: 12rem;
+    }
+
+    @media (max-width: 1500px) {
+      height: 8rem;
+    }
   }
 
   :last-child {
@@ -150,18 +181,19 @@ export const Form = styled.div`
       -moz-appearance: none;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
+
+      @media (max-width: 1800px) {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+
+      @media (max-width: 1500px) {
+      }
     }
 
     select:hover {
       transition: all 0.3s ease-in-out;
       opacity: 0.7;
-    }
-  }
-
-  @media(max-width: 1360px){
-    gap: 1rem;
-    textarea{
-      height: 7rem;
     }
   }
 `;
@@ -173,7 +205,7 @@ export const Field = styled.div`
   align-items: flex-start;
   gap: 0.5rem;
 
-  @media (max-width: 1360px){
+  @media (max-width: 1360px) {
     gap: 0.2rem;
   }
 `;
@@ -182,14 +214,14 @@ export const ButtonGroup = styled.div`
   margin-top: 0;
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 3rem;
 
   button {
-    font-size: 24px;
+    font-size: 1.7rem;
     font-weight: 700;
     margin-top: 0.5rem;
-    width: 11.5rem;
-    height: 2.8rem;
+    width: 12rem;
+    height: 3rem;
     border-radius: 8px;
     border: none;
     display: flex;
@@ -197,6 +229,18 @@ export const ButtonGroup = styled.div`
     justify-content: center;
     cursor: pointer;
     z-index: 2000;
+
+    @media (max-width: 1800px) {
+      width: 11rem;
+      height: 2.4rem;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 1500px) {
+      width: 10rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
   }
 
   .cancel {
@@ -223,5 +267,3 @@ export const ButtonGroup = styled.div`
     }
   }
 `;
-
-

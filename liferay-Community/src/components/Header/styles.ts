@@ -27,7 +27,9 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const ProfileContainer = styled.div`
+export const ProfileContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isDropdownOpen",
+})<{ isDropdownOpen: boolean }>`
   position: relative;
   display: flex;
   flex-direction: row;
@@ -76,7 +78,9 @@ export const NotificationContainer = styled.div`
   background: ${(props) => props.theme.header.notification.background};
 `;
 
-export const StyledCaretDown = styled(CaretDown)<{ isRotated: boolean }>`
+export const StyledCaretDown = styled(CaretDown).withConfig({
+  shouldForwardProp: (prop) => prop !== "isRotated",
+})<{ isDropDownOpen: boolean }>`
   color: ${(props) => props.theme.header.profile.arrow};
   font-size: 1.5rem;
   transition: transform 0.4s ease;

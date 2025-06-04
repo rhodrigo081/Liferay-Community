@@ -84,7 +84,6 @@ export const FeedBack = styled.div`
     border: none;
     color: ${({ theme }) => theme.lightText};
     cursor: pointer;
-
     &:hover {
       color: ${({ theme }) => theme.text};
     }
@@ -167,3 +166,29 @@ export const SubmitButton = styled.button`
   }
 `;
 
+export const LikeButton = styled.button<{ liked: boolean }>`
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  gap: 0.4rem; 
+
+  svg {
+    fill: ${({ liked, theme }) => (liked ? theme.danger : theme.lightText)};
+    stroke: ${({ liked, theme }) => (liked ? theme.danger : theme.lightText)};
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+  }
+
+  &:hover {
+    color: ${({ liked, theme }) => (liked ? theme.hoverdanger : theme.text)};
+
+    svg {
+      fill: ${({ liked, theme }) => (liked ? theme.hoverdanger : theme.text)};
+      stroke: ${({ liked, theme }) => (liked ? theme.hoverdanger : theme.text)};
+    }
+  }
+`;
