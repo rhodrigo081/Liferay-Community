@@ -1,9 +1,11 @@
 import { PostButton, PostContainer, PostForm, TextArea } from "./styles";
 import userImage from "../../assets/user-image.svg";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface PostProps {
   onPostCreate: (post: {
+    id:string;
     author: {
       image: string;
       name: string;
@@ -23,6 +25,7 @@ export function Post({ onPostCreate }: PostProps) {
     if (content.trim() === "") return;
 
     onPostCreate({
+      id: uuidv4(),
       author: {
         image: userImage,
         name: "Carlos Eduardo",

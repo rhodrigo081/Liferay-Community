@@ -1,5 +1,5 @@
 import { FaFilter } from "react-icons/fa";
-import { FilterContainer,  StyledRadio, Checkmark } from "./styles";
+import { FilterContainer, StyledRadio, Checkmark } from "./styles";
 
 interface FilterProps {
   selectedCategory: string;
@@ -30,11 +30,16 @@ export function Filter({ selectedCategory, onCategoryChange }: FilterProps) {
 
           return (
             <li key={category}>
-              <label htmlFor={id} onClick={() => onCategoryChange(isChecked ? "" : category)}>
-                <StyledRadio isChecked={isChecked}>
-                  <Checkmark viewBox="0 0 24 24" isVisible={isChecked}>
-                    <polyline points="20 6 9 17 4 12" />
-                  </Checkmark>
+              <label
+                htmlFor={id}
+                onClick={() => onCategoryChange(isChecked ? "" : category)}
+              >
+                <StyledRadio checked={isChecked}>
+                  {isChecked && (
+                    <Checkmark viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12" />
+                    </Checkmark>
+                  )}
                 </StyledRadio>
                 <span>{category}</span>
               </label>

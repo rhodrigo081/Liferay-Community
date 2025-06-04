@@ -32,9 +32,9 @@ export const FilterContainer = styled.div`
   }
 `;
 
-export const StyledRadio = styled.div<{ isChecked: boolean }>`
+export const StyledRadio = styled.div<{ checked: boolean }>`
   display: inline-block;
-  background: ${(props) => (props.isChecked ? "#0c70f2" : "none")};
+  background: ${(props) => (props.checked ? "#0c70f2" : "none")};
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 3px;
@@ -44,10 +44,9 @@ export const StyledRadio = styled.div<{ isChecked: boolean }>`
   cursor: pointer;
 `;
 
-export const Checkmark = styled.svg<{ isVisible: boolean }>`
+export const Checkmark = styled.svg`
   display: block;
   fill: none;
   stroke: white;
   stroke-width: 3px;
-  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")}; 
 `;

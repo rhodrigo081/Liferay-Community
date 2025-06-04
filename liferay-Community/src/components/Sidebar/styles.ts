@@ -46,10 +46,12 @@ export const IconGroup = styled.div`
   position: relative;
 `;
 
-export const IconWrapper = styled.span<{ isActive?: boolean }>`
+export const IconWrapper = styled.span.withConfig({
+  shouldForwardProp: (prop) => prop !== "active"
+})<{ active: boolean }>`
   font-size: 3.1rem;
   color: ${(props) =>
-    props.isActive ? props.theme.hoverIcon : props.theme.icon};
+    props.active ? props.theme.hoverIcon : props.theme.icon};
   transition: all 0.3s ease-in-out;
 
   &:hover {

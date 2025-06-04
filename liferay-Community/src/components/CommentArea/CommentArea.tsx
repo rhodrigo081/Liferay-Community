@@ -8,12 +8,12 @@ import {
 import userImage from "../../assets/user-image.svg";
 import { FaRegTrashAlt } from "react-icons/fa";
 import React from 'react';
-import { formatDistanceToNow } from 'date-fns'; 
+import { formatDistanceToNow, format } from 'date-fns'; 
 import { ptBR } from 'date-fns/locale'; 
 
 interface CommentAreaProps {
   content: string;
-  onDeleteComment: () => void; // Simplificado
+  onDeleteComment: () => void;
   publishedAt: Date; 
 }
 
@@ -21,8 +21,16 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
   
   function handleDeleteComment(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    onDeleteComment(); // Agora não precisa passar parâmetro
+    onDeleteComment();
   }
+
+  const publishedDateFormate = format(
+    publishedAt,
+    "d 'de' LLLL 'ás' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  )
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR, 
@@ -41,13 +49,7 @@ export function CommentArea({ content, onDeleteComment, publishedAt }: CommentAr
                 <span>Carlos Eduardo</span>
               </div>
               <time
-                title={publishedAt.toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                })}
+                title={publishedDateFormate}
                 dateTime={publishedAt.toISOString()}
               >
                 {publishedDateRelativeToNow}

@@ -2,21 +2,35 @@ import styled from "styled-components";
 
 export const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   height: 100%;
   width: 100%;
   gap: 1.35rem;
   
-  @media (max-width: 1360px) {
+  @media (max-width: 1919px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.35rem;
+<<<<<<< HEAD
     height: 90%;
     width: 150%;
     
+=======
+    height: 100%;
+    width: 100%;
+  }
+
+  @media (max-width: 1380px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.35rem;
+    height: 100%;
+    width: 100%;
+>>>>>>> e0b57237d662519230b5115ca586712e4b85595d
   }
 
   a {
+    width: 0;
     text-decoration: none;
   }
 `;
@@ -30,13 +44,13 @@ export const Card = styled.div`
   width: 21.8rem;
   height: 20rem;
   border-radius: 8px;
-  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0.125rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-in;
   align-items: center;
 
   img {
     object-fit: cover;
-    width: 100%;
+    width: 21.8rem;
     height: 40%;
   }
 
@@ -78,14 +92,14 @@ export const Text = styled.div`
   
 
   strong {
-    font-size: 16px;
+    font-size: 1rem;
     color: ${(props) => props.theme.communityCard.title};
   }
 
   p {
     color: ${(props) => props.theme.communityCard.paragraph};
     text-align: justify;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.6;
   }
    @media(max-width: 1360px){
@@ -100,11 +114,10 @@ export const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.8rem;
+  padding: 0 0 0 0.8rem;
   color: ${(props) => props.theme.communityCard.paragraph};
   position: absolute;
   top: 85%;
-  left: 3%;
 
   div {
     display: flex;
@@ -135,7 +148,7 @@ export const CardFooter = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.3rem;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   @media(max-width: 1360px){
@@ -150,8 +163,8 @@ export const Category = styled.div`
   color: ${(props) => props.theme.communityCard.category};
   background-color: ${(props) => props.theme.communityCard.categoryBackground};
   border-radius: 10px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 0.875rem;
   width: fit-content;
   cursor: pointer;
 

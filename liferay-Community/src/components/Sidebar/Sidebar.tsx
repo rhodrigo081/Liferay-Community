@@ -65,7 +65,7 @@ export function Sidebar({ openModal, communities }: SidebarProps) {
               ref={(el) => (iconRefs.current[index] = el)}
               className={location.pathname === path ? "active" : ""}
             >
-              <IconWrapper isActive={location.pathname === path}>
+              <IconWrapper active={location.pathname === path}>
                 {icon}
               </IconWrapper>
             </IconGroup>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /* Layout base */
 export const MainContainer = styled.div`
-  padding: 104px 0px 0px 90px;
+  padding: 6rem 0 0 5.5rem;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   height: 100%;
@@ -16,7 +16,7 @@ export const LayoutWrapper = styled.div`
   height: 100%;
   width: 100%;
 
-  .mainCommunity{
+  .mainCommunity {
     flex: 1;
   }
 `;
@@ -29,7 +29,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100rem;
+  height: 100%;
   gap: 2rem;
 
   hr {
@@ -170,16 +170,16 @@ export const JoinButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
-  &:hover{
-    background-color: ${({theme}) => theme.linkHover};
+  &:hover {
+    background-color: ${({ theme }) => theme.linkHover};
   }
 
   &.joined {
-    background: ${({ theme }) => theme.border}; 
+    background: ${({ theme }) => theme.border};
   }
 
   &.joined.leave {
-    background: ${({ theme }) => theme.danger}; 
+    background: ${({ theme }) => theme.danger};
   }
 
   .btn-text {
@@ -208,7 +208,6 @@ export const JoinButton = styled.button`
   }
 `;
 
-
 export const ForumContainer = styled.div`
   margin-bottom: 30px;
 `;
@@ -231,6 +230,17 @@ export const ChatPanel = styled.div`
     font-size: 15px;
     margin-top: 10px;
   }
+`;
+
+export const Notice = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  font-size: 1rem;
 `;
 
 export const MessageContainer = styled.div`

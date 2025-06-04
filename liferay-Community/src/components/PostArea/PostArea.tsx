@@ -7,11 +7,18 @@ import {
   FeedBack,
   TextArea,
   SubmitButton,
+  LikeButton,
 } from "./styles";
 import { ptBR } from "date-fns/locale/pt-BR";
 import { useEffect, useState } from "react";
-import { FaRegHeart, FaRegComment, FaRegPaperPlane } from "react-icons/fa";
+import {
+  FaRegHeart,
+  FaHeart,
+  FaRegComment,
+  FaRegPaperPlane,
+} from "react-icons/fa";
 import { CommentArea } from "../CommentArea/CommentArea";
+import { v4 as uuidv4 } from "uuid";
 
 interface Author {
   image: string;
@@ -31,12 +38,13 @@ interface Comment {
 }
 
 interface PostProps {
+  id: string;
   author: Author;
   publishedAt: Date;
   content: ContentItem[];
 }
 
-export function PostArea({ author, publishedAt, content }: PostProps) {
+export function PostArea({ id, author, publishedAt, content }: PostProps) {
   const publishedDateFormate = format(
     publishedAt,
     "d 'de' LLLL 'ás' HH:mm'h'",
@@ -50,25 +58,49 @@ export function PostArea({ author, publishedAt, content }: PostProps) {
     addSuffix: true,
   });
 
-  // Removido localStorage e usando apenas estado local
   const [comments, setComments] = useState<Comment[]>([]);
   const [newCommentText, setNewCommentText] = useState("");
 
+  useEffect(() => {
+    const storedComments = localStorage.getItem(`comments-${id}`);
+    if (storedComments) {
+      try {
+        const parsed = JSON.parse(storedComments);
+        const converted = parsed.map((comment: any) => ({
+          ...comment,
+          publishedAt: new Date(comment.publishedAt),
+        }));
+        setComments(converted);
+      } catch (err) {
+        console.error("Erro ao carregar comentários:", err);
+        setComments([]);
+      }
+    }
+  }, [id]);
+
   function handleNewComment(event: React.FormEvent) {
     event.preventDefault();
-    
-    if (newCommentText.trim() === "") {
-      return;
-    }
+
+    if (newCommentText.trim() === "") return;
 
     const newComment: Comment = {
-      id: Date.now().toString(), // ID simples baseado em timestamp
+      id: uuidv4(),
       content: newCommentText.trim(),
-      publishedAt: new Date()
+      publishedAt: new Date(),
     };
 
-    setComments(prevComments => [...prevComments, newComment]);
+    const updatedComments = [...comments, newComment];
+    setComments(updatedComments);
+    localStorage.setItem(`comments-${id}`, JSON.stringify(updatedComments)); // salva direto
     setNewCommentText("");
+  }
+
+  function deleteComment(commentToDelete: string) {
+    const updatedComments = comments.filter(
+      (comment) => comment.id !== commentToDelete
+    );
+    setComments(updatedComments);
+    localStorage.setItem(`comments-${id}`, JSON.stringify(updatedComments)); // salva direto
   }
 
   function handleCommentChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -76,13 +108,43 @@ export function PostArea({ author, publishedAt, content }: PostProps) {
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(commentToDelete: string) {
-    setComments(prevComments => 
-      prevComments.filter(comment => comment.id !== commentToDelete)
-    );
-  }
-
   const isNewCommentEmpty = newCommentText.trim().length === 0;
+
+  const [likes, setLikes] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const storedLikes = localStorage.getItem(`likes-${id}`);
+    const storedIsLiked = localStorage.getItem(`isLiked-${id}`);
+
+    if (storedLikes) {
+      setLikes(Number(storedLikes));
+    }
+
+    if (storedIsLiked) {
+      setIsLiked(storedIsLiked === "true");
+    }
+  }, [id]);
+
+  function handleToggleLike() {
+    if (!id) return;
+
+    if (isLiked) {
+      const newLikes = likes - 1;
+      setLikes(newLikes);
+      setIsLiked(false);
+      localStorage.setItem(`likes-${id}`, String(newLikes));
+      localStorage.setItem(`isLiked-${id}`, "false");
+    } else {
+      const newLikes = likes + 1;
+      setLikes(newLikes);
+      setIsLiked(true);
+      localStorage.setItem(`likes-${id}`, String(newLikes));
+      localStorage.setItem(`isLiked-${id}`, "true");
+    }
+  }
 
   return (
     <AreaContainer>
@@ -112,14 +174,12 @@ export function PostArea({ author, publishedAt, content }: PostProps) {
         })}
       </Content>
       <FeedBack>
-        <button>
-          <FaRegHeart /> 0
-        </button>
+        <LikeButton liked={isLiked} onClick={handleToggleLike}>
+          {isLiked ? <FaHeart /> : <FaRegHeart />} {likes}
+        </LikeButton>
+
         <button>
           <FaRegComment /> {comments.length}
-        </button>
-        <button>
-          <FaRegPaperPlane />
         </button>
       </FeedBack>
       <CommentForm onSubmit={handleNewComment}>
