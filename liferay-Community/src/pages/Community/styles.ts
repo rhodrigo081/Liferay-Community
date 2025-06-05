@@ -160,7 +160,7 @@ export const JoinButton = styled.button`
   overflow: hidden;
 
   background: ${({ theme }) => theme.communityCard.button};
-  color: white;
+  color: #FFFF;
   border: none;
   width: 12rem;
   height: 2.5rem;

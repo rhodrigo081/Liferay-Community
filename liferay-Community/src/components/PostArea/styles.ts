@@ -144,7 +144,7 @@ export const TextArea = styled.textarea`
 
 export const SubmitButton = styled.button`
   background-color: ${({ theme }) => theme.communityCard.button};
-  color: ${({ theme }) => theme.text};
+  color: #FFFF;
   border: none;
   width: 8rem;
   height: 2.5rem;
