@@ -29,7 +29,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 350%;
   gap: 2rem;
 
   hr {

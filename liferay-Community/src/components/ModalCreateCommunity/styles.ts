@@ -20,11 +20,7 @@ export const ModalContent = styled.div`
   padding: 2rem;
   border-radius: 35px;
   width: 40%;
-<<<<<<< HEAD
-  height:105%;
-=======
   height: 95%;
->>>>>>> e0b57237d662519230b5115ca586712e4b85595d
   margin-top: 105%;
   margin-bottom: 105%;
   max-width: 80%;
@@ -44,16 +40,11 @@ export const ModalContent = styled.div`
     color: #0b5fff;
   }
 
-<<<<<<< HEAD
   @media (max-width: 1360px) {
     gap: 0.5rem;
     height:80%;
     margin-top: 105%;
     margin-bottom: 105%;
-=======
-  @media (max-width: 1919px) {
-    gap: 0.2rem;
->>>>>>> e0b57237d662519230b5115ca586712e4b85595d
 
     h1 {
       font-size: 2rem;

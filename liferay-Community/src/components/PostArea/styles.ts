@@ -149,6 +149,7 @@ export const SubmitButton = styled.button`
   width: 8rem;
   height: 2.5rem;
   border-radius: 6px;
+  
   cursor: pointer;
   font-weight: 500;
 
