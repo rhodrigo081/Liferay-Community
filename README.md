@@ -31,7 +31,7 @@ Um plataforma web integrado ao sistema da Liferay que oferece:
 * **Framework Frontend:** React.js
 * **Linguagem:** JavaScript / TypeScript
 * **Estilização:** Styled Components
-* **Ferramenta de Build:** vite.config.js
+* **Ferramenta de Build:** vite.config.ts
 * **Plataforma Alvo:** Liferay 
 * **Versionamento e Hospedagem:** Git e GitHub
 
