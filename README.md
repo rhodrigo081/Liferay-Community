@@ -47,7 +47,7 @@ Um plataforma web integrado ao sistema da Liferay que oferece:
 | Foto                                                                 | Nome                                           | GitHub                                                       |
 | :------------------------------------------------------------------: | :--------------------------------------------- | :-----------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/116917401?v=4" width="100" alt="Rodrigo Leandro"/> | Rodrigo Leandro |[Rodrigo Leandro](https://github.com/rhodrigo081)|
-| <img src="https://avatars.githubusercontent.com/u/103284094?v=4"  width="100" alt="Pedro Humberto"/> | Pedro humberto |[Pedro humberto](https://github.com/Pedro-Priori )|
+| <img src="https://avatars.githubusercontent.com/u/103284094?v=4"  width="100" alt="Pedro Humberto"/> | Pedro Priori |[Pedro Priori](https://github.com/Pedro-Priori )|
 | <img src="https://avatars.githubusercontent.com/u/149793782?v=4"  width="100" alt="VItor Gabriel"/> | Vitor Gabriel |[Vitor Gabriel](https://github.com/VictorGabriel-00)|
 | <img src="https://avatars.githubusercontent.com/u/200514974?v=4"  width="100" alt="Raica Lira"/> | Raica Lira |[Raica Lira](https://github.com/Raicalira)|
 | <img src="https://avatars.githubusercontent.com/u/209120849?v=4"  width="100" alt="Rosana Dos Anjos"/> | Rosana Dos Anjos  | [Rosana Dos Anjos](https://github.com/Rosana6574)|
