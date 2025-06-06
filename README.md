@@ -42,8 +42,27 @@ O código-fonte principal reside dentro do diretório `liferay-Community/` na ra
     * `package.json`: Define metadados do projeto, dependências de frontend (React, Vite, Styled Components) e  scripts de build.
     * `vite.config.js` (ou similar): Configurações da ferramenta de build Vite.
     *  `src/`: Contém os arquivos fonte TypeScript (`.ts`, `.tsx`), CSS (`.css`, `.scss`), componentes React e outros assets.
+       * Conteúdo Detalhado:
+         * `assets/`: Imagens, ícones, fontes.
+         * `components/`: Componentes React reutilizáveis e genéricos (botões, cards, modais, agenda, post).
+         * `context/` : Provedores de contexto React para gerenciamento de estado global.
+         * `layouts/`: Componentes de layout para definir a estrutura visual das páginas (ex: DefaultLayout/).
+         * `pages/`: Componentes que representam páginas ou rotas específicas da aplicação (ex: Community/, Explore/).
+         * `styles/`: Arquivos de estilo e configurações de tema (ex: themes/).
+         * `App.tsx`: Componente React raiz da aplicação, orquestrando roteamento e layouts.
+         * `Router.tsx`: Configuração e definição das rotas da aplicação.
+         * `global.ts`: Variáveis globais, utilitários, tipos ou configurações compartilhadas.
+         * `main.tsx`: Ponto de entrada principal da aplicação React, onde o React é inicializado.
+         * `styled_types.ts`: Definições de tipo para propriedades e temas do Styled Components.
+         * `vite-env.d.ts`: Arquivo de declaração de tipos para o ambiente Vite.
     * `dist/`: Contém os arquivos estáticos (JavaScript compilado, CSS, assets otimizados) prontos para serem servidos. 
-    * `vercel.json`: Arquivo de configuração específico do Vercel, se utilizado, para definir rotas, variáveis de ambiente, configurações de build e deploy para a plataforma Vercel. 
+    * `vercel.json`: Arquivo de configuração específico do Vercel, se utilizado, para definir rotas, variáveis de ambiente, configurações de build e deploy para a plataforma Vercel.
+    * Outros arquivos de configuração do projeto frontend:
+      * `.vscode/`: Configurações de IDE específicas do VS Code.
+      * `.gitignore`: Regras para ignorar arquivos no controle de versão Git.
+      * `README.md`: Documentação geral do projeto.
+      * `eslint.config.js`: Configuração do ESLint para análise de código e garantia de qualidade.
+      * `tsconfig.app.json, tsconfig.json, tsconfig.node.json`: Configurações do compilador TypeScript.
 
 ## Instalação e Build
 
