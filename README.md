@@ -42,7 +42,7 @@ O código-fonte principal reside dentro do diretório `liferay-Community/` na ra
     * `package.json`: Define metadados do projeto, dependências de frontend (React, Vite, Styled Components) e  scripts de build.
     * `vite.config.js` (ou similar): Configurações da ferramenta de build Vite.
     *  `src/`: Contém os arquivos fonte TypeScript (`.ts`, `.tsx`), CSS (`.css`, `.scss`), componentes React e outros assets.
-    * `dist/`: Contém os arquivos estáticos (JavaScript compilado, CSS, assets otimizados) prontos para serem servidos. Este diretório é o artefato implantável no Vercel.
+    * `dist/`: Contém os arquivos estáticos (JavaScript compilado, CSS, assets otimizados) prontos para serem servidos. 
     * `vercel.json`: Arquivo de configuração específico do Vercel, se utilizado, para definir rotas, variáveis de ambiente, configurações de build e deploy para a plataforma Vercel. 
 
 
