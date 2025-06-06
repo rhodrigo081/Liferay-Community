@@ -30,10 +30,21 @@ Um plataforma web integrado ao sistema da Liferay que oferece:
 
 * **Framework Frontend:** React.js
 * **Linguagem:** JavaScript / TypeScript
-* **Estilização:** Tailwind CSS
+* **Estilização:** Styled Components
 * **Ferramenta de Build:** Vite
 * **Plataforma Alvo:** Liferay 
 * **Versionamento e Hospedagem:** Git e GitHub
+
+## Estrutura do Projeto
+O código-fonte principal reside dentro do diretório `liferay-Community/` na raiz do repositório. Uma estrutura típica para este tipo de projeto Liferay incluiria:
+ 
+ * `liferay-Community/`
+    * `package.json`: Define metadados do projeto, dependências de frontend (React, Vite, Styled Components) e  scripts de build.
+    * `vite.config.js` (ou similar): Configurações da ferramenta de build Vite.
+    *  `src/`: Contém os arquivos fonte TypeScript (`.ts`, `.tsx`), CSS (`.css`, `.scss`), componentes React e outros assets.
+    * `dist/`: Contém os arquivos estáticos (JavaScript compilado, CSS, assets otimizados) prontos para serem servidos. Este diretório é o artefato implantável no Vercel.
+    * `vercel.json`: Arquivo de configuração específico do Vercel, se utilizado, para definir rotas, variáveis de ambiente, configurações de build e deploy para a plataforma Vercel. 
+
 
 ## Links Úteis
 
