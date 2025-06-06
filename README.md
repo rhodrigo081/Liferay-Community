@@ -14,24 +14,24 @@ A falta de uma local centralizada para as comunidades resulta em:
 
 Um plataforma web integrado ao sistema da Liferay que oferece:
 * **Sistema de buscar de comunidade:** por filtro e nome
-* **Criaçãos de comunidade:** com classificação pré-cadastrado
-* **Visualizar posts de comunidade**
+* **Criaçãos de comunidades:** com classificação pré-cadastrado
+* **Visualizar posts de comunidades**
 * **Visualizar comentarios**
-* **Entrar em cumunidades**
+* **Entrar em comunidades**
 * **Publicar novos posts**
 * **Comentar nos posts**
 * **Apagar comentarios**
 * **Visualizar agenda**
 * **Criar eventos**
 * **Apagar seus eventos**
-* **Sair de camunidade**
+* **Sair de comunidade**
 
 ## Stack de Desenvolvimento
 
 * **Framework Frontend:** React.js
 * **Linguagem:** JavaScript / TypeScript
 * **Estilização:** Styled Components
-* **Ferramenta de Build:** Vite
+* **Ferramenta de Build:** vite.config.js
 * **Plataforma Alvo:** Liferay 
 * **Versionamento e Hospedagem:** Git e GitHub
 
@@ -45,6 +45,34 @@ O código-fonte principal reside dentro do diretório `liferay-Community/` na ra
     * `dist/`: Contém os arquivos estáticos (JavaScript compilado, CSS, assets otimizados) prontos para serem servidos. 
     * `vercel.json`: Arquivo de configuração específico do Vercel, se utilizado, para definir rotas, variáveis de ambiente, configurações de build e deploy para a plataforma Vercel. 
 
+## Instalação e Build
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/rhodrigo081/Liferay-Community.git](https://github.com/rhodrigo081/Liferay-Community.git)
+    cd Liferay-Community
+    ```
+
+2.  **Navegue até o diretório do módulo:**
+    ```bash
+    cd Liferay-Community
+    ```
+    *(Este é o diretório que contém o `package.json`)*
+
+3.  **Instale as dependências do frontend:**
+    ```bash
+    npm install
+    # OU
+    # yarn install
+    ```
+
+4.  **Inicie o ambiente de desenvolvimento:**
+    Verifique os scripts no `package.json`. Um comando comum com Vite é:
+    ```bash
+    npm run dev
+    ou
+    npm run build
+    ```
 
 ## Links Úteis
 
