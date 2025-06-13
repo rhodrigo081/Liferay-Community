@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 interface PostProps {
   onPostCreate: (post: {
-    id:string;
+    id: string;
     author: {
       image: string;
       name: string;
@@ -35,7 +35,7 @@ export function Post({ onPostCreate }: PostProps) {
       publishedAt: new Date(),
     });
 
-    setContent(""); // Limpa o campo de texto após enviar
+    setContent(""); 
   }
 
   return (

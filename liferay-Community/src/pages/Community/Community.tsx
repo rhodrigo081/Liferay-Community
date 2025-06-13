@@ -61,21 +61,24 @@ export function CommunityPage() {
   const [posts, setPosts] = useState<PostProps[]>([]);
 
   useEffect(() => {
-    const storedPosts = localStorage.getItem(`posts-${communityId}`);
-    if (storedPosts) {
-      try {
-        const parsed = JSON.parse(storedPosts);
-        const converted = parsed.map((post: PostProps) => ({
-          ...post,
-          publishedAt: new Date(post.publishedAt),
-        }));
-        setPosts(converted);
-      } catch (err) {
-        console.error("Erro ao carregar posts:", err);
-        setPosts([]);
-      }
+  const storedPosts = localStorage.getItem(`posts-${communityId}`);
+  if (storedPosts) {
+    try {
+      const parsed = JSON.parse(storedPosts);
+      const converted = parsed.map((post: PostProps) => ({
+        ...post,
+        publishedAt: new Date(post.publishedAt),
+      }));
+      setPosts(converted);
+    } catch (err) {
+      console.error("Erro ao carregar posts:", err);
+      setPosts([]);
     }
-  }, [communityId]);
+  } else{
+     setPosts([]);
+  }
+}, [communityId]);
+
 
   function handleNewPost(post: PostProps) {
     const updatedPosts = [post, ...posts];
